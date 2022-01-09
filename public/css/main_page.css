@@ -1,0 +1,357 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+html,
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.img-svg {
+  opacity: 1;
+}
+
+.img-svg svg {
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border: 0 none;
+  background-color: transparent;
+  scroll-behavior: smooth;
+}
+
+/* Убираем внутренние отступы */
+ul,
+ol {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  font-size: 14px;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul,
+ol {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  cursor: pointer;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+input,
+textarea {
+  outline: none;
+  transition: 0.2s;
+}
+
+label {
+  cursor: pointer;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.range-main-page {
+  margin-bottom: 70px;
+  text-align: center;
+  max-width: 1500px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  color: #393d38;
+  font-family: "Roboto", sans-serif;
+}
+
+.range-main-page__title-text {
+  margin-bottom: 46px;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.range-main-page__wrp-cont {
+  display: flex;
+}
+
+.range-main-page__num {
+  margin-right: 25px;
+  color: #8a8a8a;
+  font-size: 18px;
+}
+
+.range-main-page__line {
+  width: 100%;
+  height: 2px;
+  background-color: #009b3e;
+}
+
+.range-main-page__wrp-text {
+  max-width: 586px;
+}
+
+.range-main-page__img-wrp {
+  margin-right: 44px;
+}
+
+.range-main-page__text-cont {
+  padding-top: 10px;
+  text-align: left;
+}
+
+.range-main-page__style-text-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #393d38;
+  text-align: left;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.range-main-page__style-text {
+  height: 0;
+  margin-top: 10px;
+  padding-left: 46px;
+  font-size: 16px;
+  line-height: 19px;
+  opacity: 0;
+  transition: 0.3s ease-out;
+  z-index: 2;
+}
+
+.range-main-page__btn {
+  margin-bottom: 16px;
+  padding-top: 10px;
+  color: #009b3e;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.range-main-page__btn:hover {
+  color: #287231;
+}
+
+.range-main-page__line-grey {
+  width: 100%;
+  height: 1px;
+  background-color: #c4c4c4;
+}
+
+.range-main-page__title-text-wrp {
+  display: flex;
+  align-items: center;
+}
+
+.activeRange {
+  opacity: 1;
+  height: 110px;
+  transition: 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.advantage-main-page {
+  max-width: 1500px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  color: #393d38;
+  font-family: "Roboto", sans-serif;
+}
+
+.advantage-main-page__nav {
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  color: #8a8a8a;
+  white-space: nowrap;
+  overflow-x: auto;
+  cursor: pointer;
+}
+
+.advantage-main-page__title {
+  margin-bottom: 32px;
+  font-size: 36px;
+  text-align: center;
+}
+
+.advantage-main-page__nav-wrp {
+  max-width: 613px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
+.advantage-main-page__line {
+  max-width: 613px;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  background-color: #c4c4c4;
+  z-index: 2;
+}
+
+.advantage-main-page__nav-list {
+  padding-bottom: 10px;
+  position: relative;
+  transition: 0.3s ease-out;
+}
+
+.advantage-main-page__nav-list:hover {
+  color: #393d38;
+  transition: 0.3s ease-in;
+}
+
+.advantage-main-page__nav-list:hover .advanAcrion {
+  opacity: 1;
+  transition: 0.3s ease-in;
+}
+
+.advantage-main-page__nav-list + .advantage-main-page__nav-list {
+  margin-left: 15px;
+}
+
+.advantage-main-page__slider-wrp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.advantage-main-page__slider-btn {
+  width: 47px;
+  height: 47px;
+  display: flex;
+  align-items: inherit;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+}
+
+.advantage-main-page__tetx {
+  max-width: 966px;
+  text-align: center;
+}
+
+.advantage-main-page__img-wrp {
+  width: 631px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.advantage-main-page__circles {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #009b3e;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.advantage-main-page__circles + .advantage-main-page__circles {
+  margin-left: 10px;
+}
+
+.advantage-main-page__circles-wrp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.advantage-main-page__slider-cont-wrp {
+  max-width: 631px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.advantage-main-page__slider-pos {
+  display: flex;
+}
+
+.advanAcrion {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: -12px;
+  left: 0;
+  opacity: 0;
+  background-color: #009b3e;
+  transition: 0.3s ease-out;
+  z-index: 10;
+}
+
+.wrp-main-page {
+  font-family: "Roboto", sans-serif;
+}
