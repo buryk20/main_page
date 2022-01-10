@@ -7,159 +7,32 @@
       </div>
       <div class="range-main-page__wrp-text">
         <div class="range-main-page__line"></div>
-        <div class="range-main-page__text-cont" v-for="el in rangeData" :key="el.id">
-          <range-btn @click="click(el.id)" v-if="currentId === el.id">
+        <div
+          class="range-main-page__text-cont"
+          v-for="el in rangeData"
+          :key="el.id"
+          v-on:click="show"
+        >
+          <div>
             <div class="range-main-page__title-text-wrp">
-              <span class="range-main-page__num">01</span>
-              <h3 class="range-main-page__style-text-title">Видеокамеры</h3>
-            </div>
-            <template v-slot:kam>
-              <div>
-                <p>
-                  ведут круглосуточный контроль происходящего на объекте.
-                  Стабильно передают изображение хорошего качества при
-                  естественном или искусственном освещении, а также в условиях
-                  плохой видимости.
-                </p>
-                <button class="range-main-page__btn">
-                  <a href="https://greenvision.ua/production/Kamery"
-                    >В каталог</a
-                  >
-                </button>
-                <div class="range-main-page__line-grey"></div>
-              </div>
-            </template>
-          </range-btn>
-        </div>
-        <div class="range-main-page__text-cont">
-          <range-btn>
-            <div class="range-main-page__title-text-wrp">
-              <span class="range-main-page__num">02</span>
+              <span class="range-main-page__num">{{ el.id }}</span>
               <h3 class="range-main-page__style-text-title">
-                Видеодомофоны и вызывные панели
+                {{ el.title }}
               </h3>
             </div>
-            <template v-slot:kam>
-              <div>
-                <p>
-                  ведут круглосуточный контроль происходящего на объекте.
-                  Стабильно передают изображение хорошего качества при
-                  естественном или искусственном освещении, а также в условиях
-                  плохой видимости.
-                </p>
-                <button class="range-main-page__btn">
-                  <a href="https://greenvision.ua/production/SKUD/Domofony"
-                    >В каталог</a
-                  >
-                </button>
-                <div class="range-main-page__line-grey"></div>
-              </div>
-            </template>
-          </range-btn>
-        </div>
-        <div class="range-main-page__text-cont">
-          <range-btn>
-            <div class="range-main-page__title-text-wrp">
-              <span class="range-main-page__num">03</span>
-              <h3 class="range-main-page__style-text-title">
-                Электромагнитные и электромеханические замки
-              </h3>
+            <div
+              :class="{ activeRange: el.id === id }"
+              class="range-main-page__style-text"
+            >
+              <p>
+                {{ el.text }}
+              </p>
+              <button class="range-main-page__btn">
+                <a href="{{ el.link }}">В каталог</a>
+              </button>
+              <div class="range-main-page__line-grey"></div>
             </div>
-            <template v-slot:kam>
-              <div>
-                <p>
-                  ведут круглосуточный контроль происходящего на объекте.
-                  Стабильно передают изображение хорошего качества при
-                  естественном или искусственном освещении, а также в условиях
-                  плохой видимости.
-                </p>
-                <button class="range-main-page__btn">
-                  <a
-                    href="https://greenvision.ua/production/SKUD/Zamki-i-knopki"
-                    >В каталог</a
-                  >
-                </button>
-                <div class="range-main-page__line-grey"></div>
-              </div>
-            </template>
-          </range-btn>
-        </div>
-        <div class="range-main-page__text-cont">
-          <range-btn>
-            <div class="range-main-page__title-text-wrp">
-              <span class="range-main-page__num">04</span>
-              <h3 class="range-main-page__style-text-title">
-                Бесконтактные ключи и кнопки выхода
-              </h3>
-            </div>
-            <template v-slot:kam>
-              <div>
-                <p>
-                  ведут круглосуточный контроль происходящего на объекте.
-                  Стабильно передают изображение хорошего качества при
-                  естественном или искусственном освещении, а также в условиях
-                  плохой видимости.
-                </p>
-                <button class="range-main-page__btn">
-                  <a href="#">В каталог</a>
-                </button>
-                <div class="range-main-page__line-grey"></div>
-              </div>
-            </template>
-          </range-btn>
-        </div>
-        <div class="range-main-page__text-cont">
-          <range-btn>
-            <div class="range-main-page__title-text-wrp">
-              <span class="range-main-page__num">05</span>
-              <h3 class="range-main-page__style-text-title">
-                Источники бесперебойного питания
-              </h3>
-            </div>
-            <template v-slot:kam>
-              <div>
-                <p>
-                  ведут круглосуточный контроль происходящего на объекте.
-                  Стабильно передают изображение хорошего качества при
-                  естественном или искусственном освещении, а также в условиях
-                  плохой видимости.
-                </p>
-                <button class="range-main-page__btn">
-                  <a
-                    href="https://greenvision.ua/production/Istochniki-pitaniya"
-                    >В каталог</a
-                  >
-                </button>
-                <div class="range-main-page__line-grey"></div>
-              </div>
-            </template>
-          </range-btn>
-        </div>
-        <div class="range-main-page__text-cont">
-          <range-btn>
-            <div class="range-main-page__title-text-wrp">
-              <span class="range-main-page__num">06</span>
-              <h3 class="range-main-page__style-text-title">
-                Материалы для подключения и монтажа
-              </h3>
-            </div>
-            <template v-slot:kam>
-              <div>
-                <p>
-                  ведут круглосуточный контроль происходящего на объекте.
-                  Стабильно передают изображение хорошего качества при
-                  естественном или искусственном освещении, а также в условиях
-                  плохой видимости.
-                </p>
-                <button class="range-main-page__btn">
-                  <a href="https://greenvision.ua/production/Aksessuary"
-                    >В каталог</a
-                  >
-                </button>
-                <div class="range-main-page__line-grey"></div>
-              </div>
-            </template>
-          </range-btn>
+          </div>
         </div>
       </div>
     </div>
@@ -168,7 +41,6 @@
 
 <script>
 import rangeBtn from "./UI/rangeBtn.vue";
-// import RangeCont from './UI/rangeCont.vue'
 export default {
   components: { rangeBtn },
   name: "my-range",
@@ -178,9 +50,40 @@ export default {
       isActive: false,
       rangeData: [
         {
-          id: 0,
-          title: "",
-          text: "",
+          id: "01",
+          title: "Видеокамеры",
+          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          link: "https://greenvision.ua/production/Kamery"
+        },
+        {
+          id: "02",
+          title: "Видеодомофоны и вызывные панели",
+          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          link: "https://greenvision.ua/production/SKUD/Domofony"
+        },
+        {
+          id: "03",
+          title: "Электромагнитные и электромеханические замки",
+          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki"
+        },
+        {
+          id: "04",
+          title: "Бесконтактные ключи и кнопки выхода",
+          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki"
+        },
+        {
+          id: "05",
+          title: "Источники бесперебойного питания",
+          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          link: "https://greenvision.ua/production/Istochniki-pitaniya"
+        },
+        {
+          id: "06",
+          title: "Материалы для подключения и монтажа",
+          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          link: "https://greenvision.ua/production/Aksessuary"
         },
       ],
     };
@@ -193,6 +96,10 @@ export default {
         this.currentId = btnId;
       }
     },
+    show() {
+     this.el
+      console.log(this.el);
+    }
   },
 };
 </script>
