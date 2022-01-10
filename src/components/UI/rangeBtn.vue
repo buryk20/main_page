@@ -16,6 +16,7 @@ export default {
   name: 'range-btn',
   data () {
     return {
+      id : '01',
       active: false
     }
   },

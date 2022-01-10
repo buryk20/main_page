@@ -7,8 +7,8 @@
       </div>
       <div class="range-main-page__wrp-text">
         <div class="range-main-page__line"></div>
-        <div class="range-main-page__text-cont">
-          <range-btn>
+        <div class="range-main-page__text-cont" v-for="el in rangeData" :key="el.id">
+          <range-btn @click="click(el.id)" v-if="currentId === el.id">
             <div class="range-main-page__title-text-wrp">
               <span class="range-main-page__num">01</span>
               <h3 class="range-main-page__style-text-title">Видеокамеры</h3>
@@ -167,18 +167,34 @@
 </template>
 
 <script>
-import rangeBtn from './UI/rangeBtn.vue'
+import rangeBtn from "./UI/rangeBtn.vue";
 // import RangeCont from './UI/rangeCont.vue'
 export default {
   components: { rangeBtn },
-  name: 'my-range',
-  data () {
+  name: "my-range",
+  data() {
     return {
-      isActive: false
-    }
-  }
-}
+      currentId: Number.NEGATIVE_INFINITY,
+      isActive: false,
+      rangeData: [
+        {
+          id: 0,
+          title: "",
+          text: "",
+        },
+      ],
+    };
+  },
+  methods: {
+    click(btnId) {
+      if (this.currentId === btnId) {
+        this.currentId = Number.NEGATIVE_INFINITY;
+      } else {
+        this.currentId = btnId;
+      }
+    },
+  },
+};
 </script>
 
-<style lang="scss" src="../assets/scss/main_page.scss" scoped>
-</style>
+<style lang="scss" src="../assets/scss/main_page.scss" scoped></style>
