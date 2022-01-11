@@ -1,0 +1,90 @@
+.inform-bloc-main-page {
+  padding-top: 54px;
+  @include pageGredCard;
+  &__wrp-inst {
+    max-width: 894px;
+    margin-right: 16px;
+    @include boxCardProd;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__inst-text-main {
+    max-width: 250px;
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  &__inst-text {
+    max-width: 380px;
+    margin-bottom: 64px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  &__wrp-text {
+    padding: 16px 0 0 16px;
+  }
+  &__inst-btn {
+    @include btnCardWhiteBackground;
+  }
+  &__inst-img {
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  &__registrar {
+    max-width: 288px;
+    width: 100%;
+    @include boxCardProd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__wrp-top {
+    display: flex;
+  }
+  &__registrar-link {
+    @include flexCentr;
+    justify-content: flex-start;
+    position: relative;
+    color: $colorCard;
+    font-size: 24px;
+  }
+  &__cam-link {
+    @include flexCentr;
+    justify-content: center;
+    position: relative;
+    color: $colorCard;
+    font-size: 24px;
+  }
+  &__img-link {
+    @include flexCentr;
+  }
+  &__registrar-icon {
+    position: absolute;
+    right: 9px;
+    top: 5px;
+    transition: 0.2s ease-out;
+  }
+  &__registrar-btn {
+    &:hover .inform-bloc-main-page__registrar-icon {
+      right: 4px;
+      transition: 0.2s ease-in;
+    }
+    &:hover .inform-bloc-main-page__cam-icon {
+      right: -24px;
+      transition: 0.2s ease-in;
+    }
+  }
+  &__registrar + &__registrar {
+    margin-left: 16px;
+  }
+  &__registrar-icon-wrp {
+    position: relative;
+  }
+  &__cam-icon {
+    position: absolute;
+    right: -19px;
+    top: 5px;
+    transition: 0.2s ease-out;
+  }
+}

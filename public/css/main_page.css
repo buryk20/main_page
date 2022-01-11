@@ -352,6 +352,132 @@ label {
   z-index: 10;
 }
 
+.inform-bloc-main-page {
+  padding-top: 54px;
+  max-width: 1500px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  color: #393d38;
+  font-family: "Roboto", sans-serif;
+}
+
+.inform-bloc-main-page__wrp-inst {
+  max-width: 894px;
+  margin-right: 16px;
+  padding: 16px 16px;
+  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inform-bloc-main-page__inst-text-main {
+  max-width: 250px;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.inform-bloc-main-page__inst-text {
+  max-width: 380px;
+  margin-bottom: 64px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.inform-bloc-main-page__wrp-text {
+  padding: 16px 0 0 16px;
+}
+
+.inform-bloc-main-page__inst-btn {
+  padding: 8px 16px;
+  color: #009b3e;
+  border: 1px solid #009b3e;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.inform-bloc-main-page__inst-img {
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.inform-bloc-main-page__registrar {
+  max-width: 288px;
+  width: 100%;
+  padding: 16px 16px;
+  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inform-bloc-main-page__wrp-top {
+  display: flex;
+}
+
+.inform-bloc-main-page__registrar-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
+  position: relative;
+  color: #009b3e;
+  font-size: 24px;
+}
+
+.inform-bloc-main-page__cam-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: center;
+  position: relative;
+  color: #009b3e;
+  font-size: 24px;
+}
+
+.inform-bloc-main-page__img-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inform-bloc-main-page__registrar-icon {
+  position: absolute;
+  right: 9px;
+  top: 5px;
+  transition: 0.2s ease-out;
+}
+
+.inform-bloc-main-page__registrar-btn:hover .inform-bloc-main-page__registrar-icon {
+  right: 4px;
+  transition: 0.2s ease-in;
+}
+
+.inform-bloc-main-page__registrar-btn:hover .inform-bloc-main-page__cam-icon {
+  right: -24px;
+  transition: 0.2s ease-in;
+}
+
+.inform-bloc-main-page__registrar + .inform-bloc-main-page__registrar {
+  margin-left: 16px;
+}
+
+.inform-bloc-main-page__registrar-icon-wrp {
+  position: relative;
+}
+
+.inform-bloc-main-page__cam-icon {
+  position: absolute;
+  right: -19px;
+  top: 5px;
+  transition: 0.2s ease-out;
+}
+
 .wrp-main-page {
   font-family: "Roboto", sans-serif;
 }
