@@ -9,9 +9,9 @@
         <div class="range-main-page__line"></div>
         <div
           class="range-main-page__text-cont"
-          v-for="el in rangeData"
+          v-for="(el, index) in rangeData"
           :key="el.id"
-          v-on:click="show"
+          @click="click(index)"
         >
           <div>
             <div class="range-main-page__title-text-wrp">
@@ -21,14 +21,14 @@
               </h3>
             </div>
             <div
-              :class="{ activeRange: el.id === id }"
+              :class="{ activeRange: index === currentId }"
               class="range-main-page__style-text"
             >
               <p>
                 {{ el.text }}
               </p>
               <button class="range-main-page__btn">
-                <a href="{{ el.link }}">В каталог</a>
+                <a :href="el.link">В каталог</a>
               </button>
               <div class="range-main-page__line-grey"></div>
             </div>
@@ -53,37 +53,43 @@ export default {
           id: "01",
           title: "Видеокамеры",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/Kamery"
+          link: "https://greenvision.ua/production/Kamery",
+          img: "/img/range_main_page_img.png"
         },
         {
           id: "02",
           title: "Видеодомофоны и вызывные панели",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/SKUD/Domofony"
+          link: "https://greenvision.ua/production/SKUD/Domofony",
+          img: "/img/range_main_page_img.png"
         },
         {
           id: "03",
           title: "Электромагнитные и электромеханические замки",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki"
+          link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki",
+          img: "/img/range_main_page_img.png"
         },
         {
           id: "04",
           title: "Бесконтактные ключи и кнопки выхода",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki"
+          link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki",
+          img: "/img/range_main_page_img.png"
         },
         {
           id: "05",
           title: "Источники бесперебойного питания",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/Istochniki-pitaniya"
+          link: "https://greenvision.ua/production/Istochniki-pitaniya",
+          img: "/img/range_main_page_img.png"
         },
         {
           id: "06",
           title: "Материалы для подключения и монтажа",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/Aksessuary"
+          link: "https://greenvision.ua/production/Aksessuary",
+          img: "/img/range_main_page_img.png"
         },
       ],
     };
@@ -96,10 +102,6 @@ export default {
         this.currentId = btnId;
       }
     },
-    show() {
-     this.el
-      console.log(this.el);
-    }
   },
 };
 </script>
