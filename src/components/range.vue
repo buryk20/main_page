@@ -3,7 +3,12 @@
     <h2 class="range-main-page__title-text">GreenVision – это:</h2>
     <div class="range-main-page__wrp-cont">
       <div class="range-main-page__img-wrp">
-        <img src="/img/range_main_page_img.png" alt="GreenVision – это" />
+        <img
+          v-for="(elem, index) in rangeData"
+          :key="elem.id"
+          :class="{ activeRangeImg: index === currentId || replayCheck === index}"
+          class="range-main-page__img-opasi"
+          :src="elem.img" alt="GreenVision – это" />
       </div>
       <div class="range-main-page__wrp-text">
         <div class="range-main-page__line"></div>
@@ -46,7 +51,7 @@ export default {
   name: "my-range",
   data() {
     return {
-      currentId: Number.NEGATIVE_INFINITY,
+      currentId: 0,
       isActive: false,
       rangeData: [
         {
@@ -61,7 +66,7 @@ export default {
           title: "Видеодомофоны и вызывные панели",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/SKUD/Domofony",
-          img: "/img/range_main_page_img.png"
+          img: "https://klike.net/uploads/posts/2019-05/1556708032_1.jpg"
         },
         {
           id: "03",
@@ -92,14 +97,18 @@ export default {
           img: "/img/range_main_page_img.png"
         },
       ],
+      replayCheck: Number.NEGATIVE_INFINITY
     };
   },
   methods: {
     click(btnId) {
+      console.log(btnId);
       if (this.currentId === btnId) {
         this.currentId = Number.NEGATIVE_INFINITY;
+        this.replayCheck = btnId;
       } else {
         this.currentId = btnId;
+        this.replayCheck = Number.NEGATIVE_INFINITY;
       }
     },
   },
