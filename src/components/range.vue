@@ -1,6 +1,6 @@
 <template>
   <div class="range-main-page">
-    <h2 class="range-main-page__title-text">GreenVision – это:</h2>
+    <h2 class="range-main-page__title-text">Green Vision</h2>
     <div class="range-main-page__wrp-cont">
       <div class="range-main-page__img-wrp">
         <img
