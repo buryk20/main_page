@@ -2,14 +2,18 @@
   <div class="range-main-page">
     <h2 class="range-main-page__title-text">Green Vision</h2>
     <div class="range-main-page__wrp-cont">
-      <div class="range-main-page__img-wrp">
-        <img
-          v-for="(elem, index) in rangeData"
-          :key="elem.id"
-          :class="{ activeRangeImg: index === currentId || replayCheck === index}"
-          class="range-main-page__img-opasi"
-          :src="elem.img" alt="GreenVision – это" />
-      </div>
+      <a
+        v-for="(elem, index) in rangeData"
+        :key="elem.id"
+        :class="{ activeRangeImg: index === currentId || replayCheck === index}"
+        :href="elem.link"
+        class="range-main-page__img-opasi"
+      >
+        <div class="range-main-page__img-wrp">
+          <img
+            :src="elem.img" alt="GreenVision – это" />
+        </div>
+      </a>
       <div class="range-main-page__wrp-text">
         <div class="range-main-page__line"></div>
         <div
@@ -66,35 +70,35 @@ export default {
           title: "Видеодомофоны и вызывные панели",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/SKUD/Domofony",
-          img: "https://klike.net/uploads/posts/2019-05/1556708032_1.jpg"
+          img: "/img/gv-slider-intercom.png"
         },
         {
           id: "03",
-          title: "Электромагнитные и электромеханические замки",
+          title: "Комплекты видеонаблюдения",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki",
-          img: "/img/range_main_page_img.png"
+          img: "/img/gv-slider-kit-img.png"
         },
         {
           id: "04",
           title: "Бесконтактные ключи и кнопки выхода",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki",
-          img: "/img/range_main_page_img.png"
+          img: "/img/gv-slider-keys-img.png"
         },
         {
           id: "05",
           title: "Источники бесперебойного питания",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/Istochniki-pitaniya",
-          img: "/img/range_main_page_img.png"
+          img: "/img/gv-slider-ups-img.png"
         },
         {
           id: "06",
-          title: "Материалы для подключения и монтажа",
+          title: "Акссесуары для подключения и монтажа",
           text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/Aksessuary",
-          img: "/img/range_main_page_img.png"
+          img: "/img/gv-slider-accessoty-img.png"
         },
       ],
       replayCheck: Number.NEGATIVE_INFINITY

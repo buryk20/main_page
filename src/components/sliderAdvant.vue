@@ -2,27 +2,50 @@
   <div class="advantage-main-page__nav-wrp">
     <div class="advantage-main-page__line"></div>
     <div class="advantage-main-page__nav">
-      <h3 class="advantage-main-page__nav-list">
-        <div class="advanAcrion"></div>
-          Готовые решения
+      <h3
+        @click="btnReady"
+        :class="{activeColor: 0 === marginSlider}"
+        class="advantage-main-page__nav-list"
+      >
+        <span :class="{advanAcrion: 0 === marginSlider}"
+        ></span>
+        Готовые решения
       </h3>
-      <h3 class="advantage-main-page__nav-list">
-        <span class="advanAcrion"></span>Интеграция
+      <h3
+        @click="btnInter"
+        :class="{activeColor: 1 === marginSlider}"
+        class="advantage-main-page__nav-list"
+      >
+        <span :class="{advanAcrion: 1 === marginSlider}"></span>Интеграция
       </h3>
-      <h3 class="advantage-main-page__nav-list">
-        <span class="advanAcrion"></span>Цена
+      <h3
+        @click="btnPrice"
+        :class="{activeColor: 2 === marginSlider}"
+        class="advantage-main-page__nav-list"
+      >
+        <span :class="{advanAcrion: 2 === marginSlider}"></span>Цена
       </h3>
-      <h3 class="advantage-main-page__nav-list">
-        <span class="advanAcrion"></span>Гарантия
+      <h3
+        @click="btnVarant"
+        :class="{activeColor: 3 === marginSlider}"
+        class="advantage-main-page__nav-list"
+      >
+        <span :class="{advanAcrion: 3 === marginSlider}"></span>Гарантия
       </h3>
     </div>
   </div>
   <div class="advantage-main-page__slider-img-btn-wrp">
-    <button class="advantage-main-page__slider-btn">
-      <img src="/icon/adven_left_icon_main_page.svg" alt="в лево" />
+    <button
+      @click="btnLeft"
+      class="advantage-main-page__slider-btn"
+    >
+      <img class="advantage-main-page__slider-btn-img-l" src="/icon/adven_left_icon_main_page.svg" alt="в лево" />
     </button>
     <div class="advantage-main-page__slider-wrp">
-      <div class="advantage-main-page__slider-motion">
+      <div
+          :style="{marginLeft: '-' + marginSlider*100 + '%'}"
+          class="advantage-main-page__slider-motion"
+        >
           <div
             v-for="advantArr of advantArrs"
             :key="advantArr.id"
@@ -40,19 +63,22 @@
           </div>
       </div>
     </div>
-    <button class="advantage-main-page__slider-btn">
+    <button
+        @click="btnRight"
+        class="advantage-main-page__slider-btn">
         <img
+          class="advantage-main-page__slider-btn-img-r"
           src="/icon/adven_right_icon_main_page.svg"
           alt="в право"
         />
       </button>
   </div>
-  <div class="advantage-main-page__circles-wrp">
-      <div class="advantage-main-page__circles"></div>
-      <div class="advantage-main-page__circles"></div>
-      <div class="advantage-main-page__circles"></div>
-      <div class="advantage-main-page__circles"></div>
-    </div>
+<!--  <div class="advantage-main-page__circles-wrp">-->
+<!--      <div class="advantage-main-page__circles"></div>-->
+<!--      <div class="advantage-main-page__circles"></div>-->
+<!--      <div class="advantage-main-page__circles"></div>-->
+<!--      <div class="advantage-main-page__circles"></div>-->
+<!--    </div>-->
 </template>
 
 <script>
@@ -61,13 +87,168 @@ export default {
   data() {
     return {
       advantArrs: [
-        {id: Math.round(Math.random() * (1 - 200) + 1), text: "Изучив и проанализировав потребности пользователей систем видеонаблюдения и контроля доступа, специалисты из команды GreenVision разработали для Вас простые  и экономически выгодные решения. Вы можете купить комплект видеонаблюдения для дома, квартиры, дачи или офиса со 100% гарантией совместимости всех сопряженных устройств.Заказывайте готовые системы видеонаблюдения и контроля доступа в Украине и экономьте до 15% от суммарной стоимости элементов, купленных по отдельности.", img: "/img/advan_main_page_img.png"},
-        {id: Math.round(Math.random() * (1 - 200) + 1), text: "Изучив и проанализировав потребности пользователей систем видеонаблюдения и контроля доступа, специалисты из команды GreenVision разработали для Вас простые  и экономически выгодные решения. Вы можете купить комплект видеонаблюдения для дома, квартиры, дачи или офиса со 100% гарантией совместимости всех сопряженных устройств.Заказывайте готовые системы видеонаблюдения и контроля доступа в Украине и экономьте до 15% от суммарной стоимости элементов, купленных по отдельности.", img: "data:image/png;base64,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"}
-      ]
+        {id: Math.round(Math.random() * (1 - 200) + 1), text: "Изучив и проанализировав потребности пользователей систем видеонаблюдения и контроля доступа, специалисты из команды GreenVision разработали для Вас простые  и экономически выгодные решения. Вы можете купить комплект видеонаблюдения для дома, квартиры, дачи или офиса со 100% гарантией совместимости всех сопряженных устройств.Заказывайте готовые системы видеонаблюдения и контроля доступа в Украине и экономьте до 15% от суммарной стоимости элементов, купленных по отдельности.", img: "/img/integration-slider-img.png"},
+        {id: Math.round(Math.random() * (1 - 200) + 1), text: "123Изучив и проанализировав потребности пользователей систем видеонаблюдения и контроля доступа, специалисты из команды GreenVision разработали для Вас простые  и экономически выгодные решения. Вы можете купить комплект видеонаблюдения для дома, квартиры, дачи или офиса со 100% гарантией совместимости всех сопряженных устройств.Заказывайте готовые системы видеонаблюдения и контроля доступа в Украине и экономьте до 15% от суммарной стоимости элементов, купленных по отдельности.", img: "/img/advan_main_page_img.png/"},
+        {id: Math.round(Math.random() * (1 - 200) + 1), text: "123Изучив и проанализировав потребности пользователей систем видеонаблюдения и контроля доступа, специалисты из команды GreenVision разработали для Вас простые  и экономически выгодные решения. Вы можете купить комплект видеонаблюдения для дома, квартиры, дачи или офиса со 100% гарантией совместимости всех сопряженных устройств.Заказывайте готовые системы видеонаблюдения и контроля доступа в Украине и экономьте до 15% от суммарной стоимости элементов, купленных по отдельности.", img: "/img/price-slider-img.png/"},
+        {id: Math.round(Math.random() * (1 - 200) + 1), text: "123Изучив и проанализировав потребности пользователей систем видеонаблюдения и контроля доступа, специалисты из команды GreenVision разработали для Вас простые  и экономически выгодные решения. Вы можете купить комплект видеонаблюдения для дома, квартиры, дачи или офиса со 100% гарантией совместимости всех сопряженных устройств.Заказывайте готовые системы видеонаблюдения и контроля доступа в Украине и экономьте до 15% от суммарной стоимости элементов, купленных по отдельности.", img: "/img/slider-varanty-img.png/"}
+      ],
+      marginSlider: 0
+    }
+  },
+  methods: {
+    btnRight(){
+      if(this.marginSlider != 3) {
+        this.marginSlider++;
+      }
+    },
+    btnLeft(){
+
+      if (this.marginSlider != 0){
+        this.marginSlider--;
+      }
+    },
+    btnReady(){
+      this.marginSlider = 0;
+    },
+    btnInter(){
+      this.marginSlider = 1;
+    },
+    btnPrice(){
+      this.marginSlider = 2;
+    },
+    btnVarant(){
+      this.marginSlider = 3;
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.advantage-main-page {
+    @include pageGredCard;
+  &__nav {
+     padding-top: 12px;
+     display: flex;
+     justify-content: space-between;
+     font-size: 18px;
+     font-weight: 700;
+     color: $colorCardGrey;
+     white-space: nowrap;
+     overflow-x: auto;
+     cursor: pointer;
+   }
+  &__title {
+     margin-bottom: 32px;
+     font-size: 36px;
+     text-align: center;
+   }
+  &__nav-wrp {
+     max-width: 766px;
+     width: 100%;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 40px;
+   }
+  &__line {
+     max-width: 766px;
+     width: 100%;
+     height: 2px;
+     position: absolute;
+     background-color: $colorTranparentGray;
+     z-index: 2;
+   }
+  &__nav-list {
+     padding-bottom: 10px;
+     position: relative;
+     transition: 0.3s ease-out;
+  &:hover {
+     color: $colorCard;
+     transition: 0.3s ease-in;
+   }
+  &:hover .advanAcrion {
+     opacity: 1;
+     transition: 0.3s ease-in;
+   }
+  }
+  &__nav-list + &__nav-list {
+     margin-left: 15px;
+   }
+  &__slider-wrp {
+     @include flexCentrSpaceBet;
+     max-width: 885px;
+     overflow: hidden;
+   }
+  &__slider-btn {
+     width: 47px;
+     height: 47px;
+     display: flex;
+     align-items: inherit;
+     justify-content: center;
+     border-radius: 50%;
+     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+   }
+  &__tetx {
+     max-width: 966px;
+     text-align: center;
+   }
+  &__img-wrp {
+     max-width: 966px;
+     margin-bottom: 32px;
+     @include flexCentr;
+     flex-direction: column;
+   }
+  &__img {
+     max-width: 966px;
+   }
+  &__circles {
+     width: 12px;
+     height: 12px;
+     border: 1px solid $colorCard;
+     border-radius: 50%;
+     cursor: pointer;
+   }
+  &__circles + &__circles {
+     margin-left: 10px;
+   }
+  &__circles-wrp {
+     @include flexCentr;
+   }
+  &__slider-cont-wrp {
+     max-width: 966px;
+     overflow: hidden;
+     margin: 0 auto;
+   }
+  &__slider-pos {
+     display: flex;
+   }
+  &__slider-img-btn-wrp {
+     @include flexCentrSpaceBet;
+   }
+  &__slider-motion {
+     display: flex;
+    transition: 0.3s ease-in;
+   }
+  &__slider-btn-img-l {
+    padding-right: 3px;
+  }
+  &__slider-btn-img-r {
+    padding-left: 3px;
+  }
+}
+
+  .advanAcrion {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: -12px;
+    left: 0;
+    opacity: 1;
+    background-color: $colorCard;
+    transition: 0.3s ease-out;
+    z-index: 10;
+  }
+
+  .activeColor {
+    color: $colorCard;
+  }
 </style>
