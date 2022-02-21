@@ -95,7 +95,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .advantage-main-page {
     @include pageGredCard;
   &__nav {
@@ -120,6 +120,7 @@ export default {
      margin-left: auto;
      margin-right: auto;
      margin-bottom: 40px;
+
    }
   &__line {
      max-width: 766px;

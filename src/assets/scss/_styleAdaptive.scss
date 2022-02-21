@@ -6,6 +6,7 @@ $textPad: 1456px;
 $promotionConditions: 1436px;
 $smScreenWidth: 1376px;
 $staticPlockSolor: 1412px;
+$noytSize: 1280px;
 $sliderRevStarAd: 1111px;
 $smallestScreenWidth: 1080px;
 $smScreenHeight: 720px;
@@ -20,13 +21,17 @@ $littleMob: 397px;
 $heightPopUp: 1020px;
 $heightBan: 500px;
 
+@mixin noytSize {
+  @media (max-width: $noytSize) {
+    @content;
+  }
+}
 
 @mixin maxHeight {
   @media (max-height: $heightPopUp), (max-width: $mobileHeight) {
     @content;
   }
 }
-
 
 @mixin sliderRevStarAd {
   @media (max-width: $sliderRevStarAd) {
