@@ -78,12 +78,13 @@ export default {
   },
   methods: {
     btnRight(){
+      console.log('drfv')
       if(this.marginSlider < (this.advantArrs.length - 1)) {
         this.marginSlider++;
       }
     },
     btnLeft(){
-
+      console.log('dfcv')
       if (this.marginSlider > 0){
         this.marginSlider--;
       }

@@ -11,7 +11,7 @@
       >
         <div class="range-main-page__img-wrp">
           <img
-            :src="elem.img" alt="GreenVision – это" />
+            :src="elem.img" alt="GreenVision – это"/>
         </div>
       </a>
       <div class="range-main-page__wrp-text">
@@ -52,8 +52,9 @@
 <script>
 import rangeBtn from "./UI/rangeBtn.vue";
 import RangeMob from "@/components/rangeMob";
+
 export default {
-  components: {RangeMob, rangeBtn },
+  components: {RangeMob, rangeBtn},
   name: "my-range",
   data() {
     return {
@@ -127,31 +128,40 @@ export default {
   @include pageGredCard;
   @include startAdaptive {
     & {
-        @include padMob;
+      @include padMob;
     }
   }
+
   &__title-text {
     margin-bottom: 46px;
     font-size: 36px;
     font-weight: 700;
   }
+
   &__wrp-cont {
     min-height: 423px;
     display: flex;
     @include noytSize {
-    & {
-      margin-bottom: 40px;
-      flex-direction: column;
-      align-items: center;
+      & {
+        margin-bottom: 40px;
+        flex-direction: column;
+        align-items: center;
+      }
+      @include mobileWidth {
+        & {
+          display: none;
+        }
+      }
     }
-  }
 
   }
+
   &__num {
     margin-right: 25px;
     color: $colorCardGrey;
     font-size: 18px;
   }
+
   &__line {
     width: 100%;
     height: 2px;
@@ -162,15 +172,19 @@ export default {
       }
     }
   }
+
   &__wrp-text {
     max-width: 586px;
   }
+
   &__img-wrp {
   }
+
   &__text-cont {
     padding-top: 10px;
     text-align: left;
   }
+
   &__style-text-title {
     font-size: 24px;
     font-weight: 600;
@@ -179,6 +193,7 @@ export default {
     cursor: pointer;
     z-index: 10;
   }
+
   &__style-text {
     height: 0;
     margin-top: 10px;
@@ -189,25 +204,30 @@ export default {
     transition: 0.3s ease-out;
     z-index: 2;
   }
+
   &__btn {
     margin-bottom: 10px;
     padding-top: 10px;
     color: $colorCard;
     font-size: 16px;
     text-decoration: underline;
+
     &:hover {
       color: $colorHov;
     }
   }
+
   &__line-grey {
     width: 100%;
     height: 1px;
     background-color: $colorTranparentGray;
   }
+
   &__title-text-wrp {
     display: flex;
     align-items: center;
   }
+
   &__img-opasi {
     display: none;
     margin-right: 44px;
