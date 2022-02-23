@@ -54,12 +54,6 @@
         />
       </button>
   </div>
-<!--  <div class="advantage-main-page__circles-wrp">-->
-<!--      <div class="advantage-main-page__circles"></div>-->
-<!--      <div class="advantage-main-page__circles"></div>-->
-<!--      <div class="advantage-main-page__circles"></div>-->
-<!--      <div class="advantage-main-page__circles"></div>-->
-<!--    </div>-->
 </template>
 
 <script>

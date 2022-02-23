@@ -2,18 +2,22 @@
   <div class="range-main-page">
     <h2 class="range-main-page__title-text">Green Vision</h2>
     <div class="range-main-page__wrp-cont">
-      <a
-        v-for="(elem, index) in rangeData"
-        :key="elem.id"
-        :class="{ activeRangeImg: index === currentId || replayCheck === index}"
-        :href="elem.link"
-        class="range-main-page__img-opasi"
-      >
-        <div class="range-main-page__img-wrp">
-          <img
-            :src="elem.img" alt="GreenVision – это"/>
-        </div>
-      </a>
+      <div class="range-main-page__wrp-img-mob">
+        <a
+          v-for="(elem, index) in rangeData"
+          :key="elem.id"
+          :class="{ activeRangeImg: index === currentId || replayCheck === index}"
+          :href="elem.link"
+          class="range-main-page__img-opasi"
+        >
+<!--          <div class="range-main-page__img-wrp">-->
+            <img
+              @touchstart="touchStart($event)"
+              class="range-main-page__img"
+              :src="elem.img" alt="GreenVision – это"/>
+<!--          </div>-->
+        </a>
+      </div>
       <div class="range-main-page__wrp-text">
         <div class="range-main-page__line"></div>
         <div
@@ -33,7 +37,7 @@
               :class="{ activeRange: index === currentId }"
               class="range-main-page__style-text"
             >
-              <p>
+              <p class="range-main-page__style-text-mob">
                 {{ el.text }}
               </p>
               <button class="range-main-page__btn">
@@ -45,21 +49,20 @@
         </div>
       </div>
     </div>
-    <range-mob :rangeData="rangeData"></range-mob>
   </div>
 </template>
 
 <script>
 import rangeBtn from "./UI/rangeBtn.vue";
-import RangeMob from "@/components/rangeMob";
 
 export default {
-  components: {RangeMob, rangeBtn},
+  components: { rangeBtn},
   name: "my-range",
   data() {
     return {
       currentId: 0,
       isActive: false,
+      width: 0,
       rangeData: [
         {
           id: "01",
@@ -104,20 +107,33 @@ export default {
           img: "/img/gv-slider-accessoty-img.png"
         },
       ],
-      replayCheck: Number.NEGATIVE_INFINITY
+      replayCheck: Number.NEGATIVE_INFINITY,
+      showActiveItem: {},
+      startX: 0,
     };
   },
   methods: {
     click(btnId) {
-      console.log(btnId);
-      if (this.currentId === btnId) {
-        this.currentId = Number.NEGATIVE_INFINITY;
-        this.replayCheck = btnId;
-      } else {
-        this.currentId = btnId;
-        this.replayCheck = Number.NEGATIVE_INFINITY;
+      this.updateWidth();
+      if(this.width > 679){
+        if (this.currentId === btnId) {
+          this.currentId = Number.NEGATIVE_INFINITY;
+          this.replayCheck = btnId;
+        } else {
+          this.currentId = btnId;
+          this.replayCheck = Number.NEGATIVE_INFINITY;
+        }
       }
     },
+    updateWidth() {
+      this.width = window.innerWidth;
+    },
+    touchStart(e){
+      console.log(e.touches[0].clientX)
+    },
+    startMove(currX) {
+
+    }
   },
 };
 </script>
@@ -149,7 +165,6 @@ export default {
       }
       @include mobileWidth {
         & {
-          display: none;
         }
       }
     }
@@ -160,6 +175,11 @@ export default {
     margin-right: 25px;
     color: $colorCardGrey;
     font-size: 18px;
+    @include  mobileWidth {
+      & {
+        display: none;
+      }
+    }
   }
 
   &__line {
@@ -185,15 +205,6 @@ export default {
     text-align: left;
   }
 
-  &__style-text-title {
-    font-size: 24px;
-    font-weight: 600;
-    color: $colorCardProd;
-    text-align: left;
-    cursor: pointer;
-    z-index: 10;
-  }
-
   &__style-text {
     height: 0;
     margin-top: 10px;
@@ -203,6 +214,33 @@ export default {
     opacity: 0;
     transition: 0.3s ease-out;
     z-index: 2;
+    @include mobileWidth {
+    & {
+      padding-left: 0;
+      text-align: center;
+    }
+  }
+  }
+
+  &__style-text-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: $colorCardProd;
+    text-align: left;
+    cursor: pointer;
+    z-index: 10;
+    @include mobileWidth {
+      & {
+        @include cenMarg;
+      }
+    }
+  }
+  &__style-text-mob {
+    @include mobileWidth {
+      & {
+        text-align: center;
+      }
+    }
   }
 
   &__btn {
@@ -221,6 +259,11 @@ export default {
     width: 100%;
     height: 1px;
     background-color: $colorTranparentGray;
+    @include mobileWidth {
+      & {
+        display: none;
+      }
+    }
   }
 
   &__title-text-wrp {
@@ -235,6 +278,30 @@ export default {
       & {
         margin-bottom: 20px;
         margin-right: 0;
+      }
+    }
+    @include mobileWidth {
+      & {
+        display: flex;
+      }
+    }
+  }
+
+  &__img {
+    @include  mobileWidth {
+      & {
+        max-width: 648px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__wrp-img-mob {
+    @include mobileWidth {
+      & {
+        max-width: 100%;
+        display: flex;
+        overflow: hidden;
       }
     }
   }
