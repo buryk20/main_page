@@ -115,7 +115,7 @@ export default {
   methods: {
     click(btnId) {
       this.updateWidth();
-      if(this.width > 679){
+      if(this.width >= 680){
         if (this.currentId === btnId) {
           this.currentId = Number.NEGATIVE_INFINITY;
           this.replayCheck = btnId;
@@ -129,7 +129,10 @@ export default {
       this.width = window.innerWidth;
     },
     touchStart(e){
-      console.log(e.touches[0].clientX)
+      if(this.width < 680) {
+        console.log(e.touches[0].clientX)
+      }
+
     },
     startMove(currX) {
 
