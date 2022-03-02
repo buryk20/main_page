@@ -24,7 +24,7 @@
     </button>
     <div class="advantage-main-page__slider-wrp">
       <div
-        :style="{marginLeft: '-' + marginSlider*100 + '%'}"
+        :style="{marginLeft: '-' + marginSlider * 100 + '%'}"
         class="advantage-main-page__slider-motion"
       >
         <div
@@ -65,7 +65,7 @@ export default {
         {
           id: Math.round(Math.random() * (1 - 200) + 1),
           title: "Готовые решения",
-          text: "Изучив и проанализировав потребности пользователей систем видеонаблюдения и контроля доступа, специалисты из команды GreenVision разработали для Вас простые  и экономически выгодные решения. Вы можете купить комплект видеонаблюдения для дома, квартиры, дачи или офиса со 100% гарантией совместимости всех сопряженных устройств.Заказывайте готовые системы видеонаблюдения и контроля доступа в Украине и экономьте до 15% от суммарной стоимости элементов, купленных по отдельности.",
+          text: `Изучив и проанализировав потребности пользователей систем видеонаблюдения и контроля доступа, специалисты из команды GreenVision разработали для Вас простые  и экономически выгодные решения. Вы можете купить комплект видеонаблюдения для дома, квартиры, дачи или офиса со 100% гарантией совместимости всех сопряженных устройств.Заказывайте готовые системы видеонаблюдения и контроля доступа в Украине и экономьте до 15% от суммарной стоимости элементов, купленных по отдельности.`,
           img: "/img/integration-slider-img.png"
         },
         {
@@ -87,7 +87,9 @@ export default {
           img: "/img/slider-varanty-img.png/"
         }
       ],
-      marginSlider: 0
+      marginSlider: 0,
+      width: 0,
+      withBlockSlider: 0
     }
   },
   methods: {
@@ -105,7 +107,16 @@ export default {
     },
     btnNav(index) {
       this.marginSlider = index;
+    },
+    updateWidth() {
+      this.width = window.innerWidth;
+    },
+    withBlockSlider(){
+      this.withBlockSlider = this.width - 32;
     }
+  },
+  mounted() {
+    // this.withBlockSlider();
   }
 }
 </script>
@@ -113,7 +124,7 @@ export default {
 <style lang="scss">
 .advantage-main-page {
   @include pageGredCard;
-
+  display: none;
   &__nav {
     padding-top: 12px;
     display: flex;

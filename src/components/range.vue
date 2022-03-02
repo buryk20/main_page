@@ -1,8 +1,12 @@
 <template>
-  <div class="range-main-page">
+  <div class="range-main-page" ref="slider">
     <h2 class="range-main-page__title-text">Green Vision</h2>
     <div class="range-main-page__wrp-cont">
-      <div class="range-main-page__wrp-img-mob">
+      <div
+        :style="{marginLeft: '-' + counter*100 + '%'}"
+        class="range-main-page__wrp-img-mob"
+        ref="list"
+      >
         <a
           v-for="(elem, index) in rangeData"
           :key="elem.id"
@@ -10,12 +14,13 @@
           :href="elem.link"
           class="range-main-page__img-opasi"
         >
-<!--          <div class="range-main-page__img-wrp">-->
-            <img
-              @touchstart="touchStart($event)"
-              class="range-main-page__img"
-              :src="elem.img" alt="GreenVision – это"/>
-<!--          </div>-->
+          <!--          <div class="range-main-page__img-wrp">-->
+          <img
+            @touchstart="touchStart($event, index)"
+            @touchend="touchEnd($event)"
+            class="range-main-page__img"
+            :src="elem.img" alt="GreenVision – это"/>
+          <!--          </div>-->
         </a>
       </div>
       <div class="range-main-page__wrp-text">
@@ -26,7 +31,10 @@
           :key="el.id"
           @click="click(index)"
         >
-          <div>
+          <div
+            :class="{ activeRange: index === counter }"
+            class="range-main-page__pos-mob"
+          >
             <div class="range-main-page__title-text-wrp">
               <span class="range-main-page__num">{{ el.id }}</span>
               <h3 class="range-main-page__style-text-title">
@@ -34,7 +42,7 @@
               </h3>
             </div>
             <div
-              :class="{ activeRange: index === currentId }"
+              :class="{ activeRange: index === counter }"
               class="range-main-page__style-text"
             >
               <p class="range-main-page__style-text-mob">
@@ -56,7 +64,7 @@
 import rangeBtn from "./UI/rangeBtn.vue";
 
 export default {
-  components: { rangeBtn},
+  components: {rangeBtn},
   name: "my-range",
   data() {
     return {
@@ -110,12 +118,24 @@ export default {
       replayCheck: Number.NEGATIVE_INFINITY,
       showActiveItem: {},
       startX: 0,
+      endX: 0,
+      itemWidth: 0,
+      currentX: 0,
+      isWatchMove: false,
+      intervalHandler: null,
+      isRightClick: false,
+      counter: 0
     };
+  },
+  computed: {
+    isMobile() {
+      return this.width < parseFloat(getComputedStyle(window.document.documentElement).getPropertyValue('--mobile-width'));
+    }
   },
   methods: {
     click(btnId) {
       this.updateWidth();
-      if(this.width >= 680){
+      if (this.isMobile) {
         if (this.currentId === btnId) {
           this.currentId = Number.NEGATIVE_INFINITY;
           this.replayCheck = btnId;
@@ -128,30 +148,82 @@ export default {
     updateWidth() {
       this.width = window.innerWidth;
     },
-    touchStart(e){
-      if(this.width < 680) {
-        console.log(e.touches[0].clientX)
-      }
+    touchStart(e, ind) {
+      if (this.isMobile) {
+        this.startMove(e.touches[0].clientX);
+        window.addEventListener('touchmove', this.touchMove);
+        this.textMove(ind)
+        console.log(ind)
 
+      }
     },
     startMove(currX) {
+      this.resetInterval();
+      this.showActiveItem.startX = currX;
+      this.showActiveItem.currentX = currX;
+    },
+    move(currX) {
+      this.showActiveItem.currentX = currX;
+    },
+    endMove() {
+      if (Math.sign(this.showActiveItem.currentX - this.showActiveItem.startX) < 0) {
+        this.isRightClick = true;
+      } else if(Math.sign(this.showActiveItem.currentX - this.showActiveItem.startX) > 0) {
+        this.isRightClick = false;
+      }
+      if (this.isRightClick && this.counter < (this.rangeData.length - 1)) {
+        this.counter += 1;
+      } else if (!this.isRightClick && this.counter > 0) {
+        this.counter -= 1;
+      }
+    },
+    touchMove(e) {
+      this.move(e.touches[0].clientX)
+    },
+    touchEnd(e) {
+      this.endMove();
+      window.removeEventListener('touchmove', this.touchMove)
+    },
 
+    setMyInterval() {
+      this.intervalHandler = setInterval(() => {
+      }, 8000)
+    },
+
+    resetInterval() {
+      clearInterval(this.intervalHandler);
+      this.setMyInterval();
+    },
+
+    onResize() {
+      console.log(1);
+      this.width = window.innerWidth;
+      this.itemWidth = this.$refs.list.getBoundingClientRect().width;
+      this.$refs.slider.style.setProperty('--slider-item-with', this.itemWidth + 'px');
     }
   },
+  mounted() {
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.onResize);
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .range-main-page {
-  text-align: center;
+  --slider-item-with: 500px;
+
+  text-align: left;
   @include pageGredCard;
   @include startAdaptive {
-    & {
-      @include padMob;
-    }
+    @include padMob;
   }
 
   &__title-text {
+    text-align: center;
     margin-bottom: 46px;
     font-size: 36px;
     font-weight: 700;
@@ -160,28 +232,25 @@ export default {
   &__wrp-cont {
     min-height: 423px;
     display: flex;
+
     @include noytSize {
-      & {
-        margin-bottom: 40px;
-        flex-direction: column;
-        align-items: center;
-      }
-      @include mobileWidth {
-        & {
-        }
-      }
+      margin-bottom: 40px;
+      flex-direction: column;
+      align-items: center;
     }
 
+    @include mobileWidth {
+      align-items: inherit;
+      overflow: hidden;
+    }
   }
 
   &__num {
     margin-right: 25px;
     color: $colorCardGrey;
     font-size: 18px;
-    @include  mobileWidth {
-      & {
-        display: none;
-      }
+    @include mobileWidth {
+      display: none;
     }
   }
 
@@ -190,14 +259,24 @@ export default {
     height: 2px;
     background-color: $colorCard;
     @include noytSize {
-      & {
-        display: none;
-      }
+      display: none;
     }
   }
 
   &__wrp-text {
     max-width: 586px;
+    position: relative;
+    @include mobileWidth {
+
+    }
+  }
+
+  &__pos-mob {
+    @include mobileWidth {
+      height: 0;
+      position: absolute;
+      opacity: 0;
+    }
   }
 
   &__img-wrp {
@@ -206,6 +285,11 @@ export default {
   &__text-cont {
     padding-top: 10px;
     text-align: left;
+    @include mobileWidth {
+      & {
+        padding-top: 0;
+      }
+    }
   }
 
   &__style-text {
@@ -218,11 +302,11 @@ export default {
     transition: 0.3s ease-out;
     z-index: 2;
     @include mobileWidth {
-    & {
-      padding-left: 0;
-      text-align: center;
+      & {
+        padding-left: 0;
+        text-align: center;
+      }
     }
-  }
   }
 
   &__style-text-title {
@@ -233,16 +317,14 @@ export default {
     cursor: pointer;
     z-index: 10;
     @include mobileWidth {
-      & {
-        @include cenMarg;
-      }
+      @include cenMarg;
+      text-align: center;
     }
   }
+
   &__style-text-mob {
     @include mobileWidth {
-      & {
-        text-align: center;
-      }
+      text-align: center;
     }
   }
 
@@ -263,9 +345,7 @@ export default {
     height: 1px;
     background-color: $colorTranparentGray;
     @include mobileWidth {
-      & {
-        display: none;
-      }
+      display: none;
     }
   }
 
@@ -278,34 +358,29 @@ export default {
     display: none;
     margin-right: 44px;
     @include noytSize {
-      & {
-        margin-bottom: 20px;
-        margin-right: 0;
-      }
+      margin-bottom: 20px;
+      margin-right: 0;
     }
+
     @include mobileWidth {
-      & {
-        display: flex;
-      }
+      min-width: var(--slider-item-with);
+      max-width: var(--slider-item-with);
+      display: flex;
     }
   }
 
   &__img {
-    @include  mobileWidth {
-      & {
-        max-width: 648px;
-        object-fit: cover;
-      }
+    border-radius: 8px;
+    @include mobileWidth {
+      width: 100%;
+      object-fit: cover;
     }
   }
 
   &__wrp-img-mob {
+    transition: 0.5s ease-in-out;
     @include mobileWidth {
-      & {
-        max-width: 100%;
-        display: flex;
-        overflow: hidden;
-      }
+      display: flex;
     }
   }
 }
@@ -317,8 +392,9 @@ export default {
 
 .activeRange {
   opacity: 1;
-  height: 94px;
-  transition: 0.3s ease-in-out;
+  position: relative;
+  height: 130px;
+  transition: height 0.2s ease-in-out;
   z-index: 1;
 }
 

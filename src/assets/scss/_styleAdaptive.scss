@@ -21,6 +21,11 @@ $littleMob: 397px;
 $heightPopUp: 1020px;
 $heightBan: 500px;
 
+
+:root {
+  --mobile-width: 680px;
+}
+
 @mixin noytSize {
   @media (max-width: $noytSize) {
     @content;
