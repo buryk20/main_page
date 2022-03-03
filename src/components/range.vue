@@ -1,6 +1,6 @@
 <template>
   <div class="range-main-page" ref="slider">
-    <h2 class="range-main-page__title-text">Green Vision</h2>
+    <h2 class="range-main-page__title-text">Green Vision это:</h2>
     <div class="range-main-page__wrp-cont">
       <div
         :style="{marginLeft: '-' + counter*100 + '%'}"
@@ -10,18 +10,25 @@
         <a
           v-for="(elem, index) in rangeData"
           :key="elem.id"
-          :class="{ activeRangeImg: index === currentId || replayCheck === index}"
+          :class="{ activeRangeImg: index === currentId || replayCheck === index }"
           :href="elem.link"
           class="range-main-page__img-opasi"
         >
-          <!--          <div class="range-main-page__img-wrp">-->
           <img
             @touchstart="touchStart($event, index)"
             @touchend="touchEnd($event)"
             class="range-main-page__img"
             :src="elem.img" alt="GreenVision – это"/>
-          <!--          </div>-->
         </a>
+      </div>
+      <div class="range-main-page__circle-wrp">
+        <span
+          v-for="(circle, index) in rangeData"
+          :key="circle.id"
+          :class="{ activeCircle: index === counter }"
+          class="range-main-page__circle"
+        >
+        </span>
       </div>
       <div class="range-main-page__wrp-text">
         <div class="range-main-page__line"></div>
@@ -32,7 +39,7 @@
           @click="click(index)"
         >
           <div
-            :class="{ activeRange: index === counter }"
+            :class="{ activeRange: index === counter, activeRangeMom: index === counter }"
             class="range-main-page__pos-mob"
           >
             <div class="range-main-page__title-text-wrp">
@@ -42,7 +49,7 @@
               </h3>
             </div>
             <div
-              :class="{ activeRange: index === counter }"
+              :class="{ activeRange: index === currentId, activeRangeMom: index === counter}"
               class="range-main-page__style-text"
             >
               <p class="range-main-page__style-text-mob">
@@ -82,35 +89,35 @@ export default {
         {
           id: "02",
           title: "Видеодомофоны и вызывные панели",
-          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          text: "2ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/SKUD/Domofony",
           img: "/img/gv-slider-intercom.png"
         },
         {
           id: "03",
           title: "Комплекты видеонаблюдения",
-          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          text: "3ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki",
           img: "/img/gv-slider-kit-img.png"
         },
         {
           id: "04",
           title: "Бесконтактные ключи и кнопки выхода",
-          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          text: "4ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki",
           img: "/img/gv-slider-keys-img.png"
         },
         {
           id: "05",
           title: "Источники бесперебойного питания",
-          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          text: "5ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/Istochniki-pitaniya",
           img: "/img/gv-slider-ups-img.png"
         },
         {
           id: "06",
           title: "Акссесуары для подключения и монтажа",
-          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
+          text: "6ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
           link: "https://greenvision.ua/production/Aksessuary",
           img: "/img/gv-slider-accessoty-img.png"
         },
@@ -135,7 +142,7 @@ export default {
   methods: {
     click(btnId) {
       this.updateWidth();
-      if (this.isMobile) {
+      if (!this.isMobile) {
         if (this.currentId === btnId) {
           this.currentId = Number.NEGATIVE_INFINITY;
           this.replayCheck = btnId;
@@ -152,9 +159,7 @@ export default {
       if (this.isMobile) {
         this.startMove(e.touches[0].clientX);
         window.addEventListener('touchmove', this.touchMove);
-        this.textMove(ind)
-        console.log(ind)
-
+        // this.textMove(ind)
       }
     },
     startMove(currX) {
@@ -168,13 +173,20 @@ export default {
     endMove() {
       if (Math.sign(this.showActiveItem.currentX - this.showActiveItem.startX) < 0) {
         this.isRightClick = true;
-      } else if(Math.sign(this.showActiveItem.currentX - this.showActiveItem.startX) > 0) {
+      } else if (Math.sign(this.showActiveItem.currentX - this.showActiveItem.startX) > 0) {
         this.isRightClick = false;
       }
-      if (this.isRightClick && this.counter < (this.rangeData.length - 1)) {
+        if (this.isRightClick && this.counter < (this.rangeData.length - 1)) {
         this.counter += 1;
       } else if (!this.isRightClick && this.counter > 0) {
         this.counter -= 1;
+      }
+    },
+    mobileVersionCheck() {
+      if (!this.isMobile) {
+        this.counter = -1;
+      } else {
+        this.counter = 0;
       }
     },
     touchMove(e) {
@@ -182,7 +194,7 @@ export default {
     },
     touchEnd(e) {
       this.endMove();
-      window.removeEventListener('touchmove', this.touchMove)
+      window.removeEventListener('touchmove', this.touchMove);
     },
 
     setMyInterval() {
@@ -196,8 +208,8 @@ export default {
     },
 
     onResize() {
-      console.log(1);
       this.width = window.innerWidth;
+      this.mobileVersionCheck();
       this.itemWidth = this.$refs.list.getBoundingClientRect().width;
       this.$refs.slider.style.setProperty('--slider-item-with', this.itemWidth + 'px');
     }
@@ -205,6 +217,7 @@ export default {
   mounted() {
     this.onResize();
     window.addEventListener('resize', this.onResize);
+    this.mobileVersionCheck();
   },
   unmounted() {
     window.removeEventListener('resize', this.onResize);
@@ -227,6 +240,11 @@ export default {
     margin-bottom: 46px;
     font-size: 36px;
     font-weight: 700;
+
+    @include mobileWidth {
+      margin-bottom: 24px;
+      font-size: 30px;
+    }
   }
 
   &__wrp-cont {
@@ -242,6 +260,7 @@ export default {
     @include mobileWidth {
       align-items: inherit;
       overflow: hidden;
+      margin-bottom: 0;
     }
   }
 
@@ -267,7 +286,7 @@ export default {
     max-width: 586px;
     position: relative;
     @include mobileWidth {
-
+      @include cenMarg;
     }
   }
 
@@ -323,8 +342,11 @@ export default {
   }
 
   &__style-text-mob {
+    height: 56px;
+    overflow: hidden;
     @include mobileWidth {
       text-align: center;
+      height: auto;
     }
   }
 
@@ -337,6 +359,10 @@ export default {
 
     &:hover {
       color: $colorHov;
+    }
+
+    @include mobileWidth {
+      margin-bottom: 0;
     }
   }
 
@@ -383,6 +409,27 @@ export default {
       display: flex;
     }
   }
+
+  &__circle-wrp {
+    display: none;
+    @include mobileWidth {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__circle {
+    width: 7px;
+    height: 7px;
+    display: flex;
+    border: 1px solid $colorCard;
+    border-radius: 50%;
+  }
+
+  &__circle + &__circle {
+    margin-left: 5px;
+  }
 }
 
 .activeRangeImg {
@@ -393,9 +440,32 @@ export default {
 .activeRange {
   opacity: 1;
   position: relative;
-  height: 130px;
+  height: 93px;
   transition: height 0.2s ease-in-out;
   z-index: 1;
 }
+
+.activeRangeMom {
+  @include mobileWidth {
+    opacity: 1;
+    position: relative;
+    height: 125px;
+    transition: height 0.2s ease-in-out;
+    z-index: 1;
+  }
+
+  @include mobSliderMainPage {
+    height: 146px;
+  }
+
+  @include snakeSolor {
+    height: 190px;
+  }
+}
+
+.activeCircle {
+  background-color: $colorCard;
+}
+
 
 </style>

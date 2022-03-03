@@ -110,13 +110,9 @@ export default {
     },
     updateWidth() {
       this.width = window.innerWidth;
-    },
-    withBlockSlider(){
-      this.withBlockSlider = this.width - 32;
     }
   },
   mounted() {
-    // this.withBlockSlider();
   }
 }
 </script>
