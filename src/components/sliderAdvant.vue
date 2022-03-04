@@ -238,7 +238,12 @@ export default {
   &__img-wrp {
     max-width: var(--slider-item-width);
     min-width: var(--slider-item-width);
+    margin-bottom: 50px;
     display: flex;
+
+    @include mobileWidth {
+      margin-bottom: 37px;
+    }
   }
 
   &__img {

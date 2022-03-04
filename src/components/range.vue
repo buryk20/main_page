@@ -3,7 +3,7 @@
     <h2 class="range-main-page__title-text">Green Vision это:</h2>
     <div class="range-main-page__wrp-cont">
       <div
-        :style="{marginLeft: '-' + counter*100 + '%'}"
+        :style="{marginLeft: '-' + counter*100 + '%', marginRight: '-' + counterMob + 'px'}"
         class="range-main-page__wrp-img-mob"
         ref="list"
       >
@@ -134,12 +134,13 @@ export default {
       isWatchMove: false,
       intervalHandler: null,
       isRightClick: false,
-      counter: 0
+      counter: 0,
+      counterMob: 0
     };
   },
   computed: {
     isMobile() {
-      return this.width < parseFloat(getComputedStyle(window.document.documentElement).getPropertyValue('--mobile-width'));
+      return this.width <= parseFloat(getComputedStyle(window.document.documentElement).getPropertyValue('--mobile-width'));
     }
   },
   methods: {
@@ -162,7 +163,7 @@ export default {
       if (this.isMobile) {
         this.startMove(e.touches[0].clientX);
         window.addEventListener('touchmove', this.touchMove);
-
+        this.endMove(e);
       }
     },
     startMove(currX) {
@@ -173,7 +174,7 @@ export default {
     move(currX) {
       this.showActiveItem.currentX = currX;
     },
-    endMove() {
+    endMove(touchend, ) {
       const clientWay = this.showActiveItem.currentX - this.showActiveItem.startX;
 
       if (Math.abs(clientWay) < 10) {
@@ -185,6 +186,7 @@ export default {
       } else if (Math.sign(clientWay) > 0) {
         this.isRightClick = false;
       }
+      console.log(touchend)
       if (this.isRightClick && this.counter < (this.rangeData.length - 1)) {
         this.counter += 1;
         console.log(this.counter)
@@ -203,7 +205,7 @@ export default {
       this.move(e.touches[0].clientX);
     },
     touchEnd(e) {
-      this.endMove();
+      this.endMove(e);
       window.removeEventListener('touchmove', this.touchMove);
     },
     setMyInterval() {
@@ -256,6 +258,7 @@ export default {
 
   &__wrp-cont {
     min-height: 423px;
+    margin-bottom: 60px;
     display: flex;
 
     @include noytSize {
@@ -265,10 +268,32 @@ export default {
     }
 
     @include mobileWidth {
+      min-height: 558px;
+      margin-bottom: 24px;
       align-items: inherit;
       overflow: hidden;
-      margin-bottom: 0;
     }
+
+    @include mobileSliderRange {
+      min-height: 538px;
+    }
+
+    @include mobSliderMainPage {
+      min-height: 518px;
+    }
+
+    @include mobileHeight {
+      min-height: 478px;
+    }
+
+    @include snakeSolor {
+      min-height: 460px;
+    }
+
+    @include mobX {
+      min-height: 438px;
+    }
+
   }
 
   &__num {
@@ -456,17 +481,17 @@ export default {
   @include mobileWidth {
     opacity: 1;
     position: relative;
-    height: 125px;
+    //height: 125px;
     transition: height 0.2s ease-in-out;
     z-index: 1;
   }
 
   @include mobSliderMainPage {
-    height: 146px;
+    //height: 146px;
   }
 
   @include snakeSolor {
-    height: 190px;
+    //height: 190px;
   }
 }
 

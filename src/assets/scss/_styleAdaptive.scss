@@ -14,9 +14,11 @@ $bigMobileWidth: 960px;
 $floatingCard: 860px;
 $mobileWidth: 680px;
 $mobileHeight: 600px;
+$mobileSliderRange: 640px;
 $mobSliderMainPage: 573px;
-$blockImgStatic: 510px;
+$blockImgStatic: 530px;
 $snakeSolor: 491px;
+$mobX: 421px;
 $littleMob: 397px;
 
 $heightPopUp: 1020px;
@@ -25,6 +27,18 @@ $heightBan: 500px;
 
 :root {
   --mobile-width: 680px;
+}
+
+@mixin mobX {
+  @media (max-width: $mobX) {
+    @content;
+  }
+}
+
+@mixin mobileSliderRange {
+  @media (max-width: $mobileSliderRange) {
+    @content;
+  }
 }
 
 @mixin mobSliderMainPage {
