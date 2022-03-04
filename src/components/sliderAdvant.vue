@@ -22,7 +22,9 @@
     >
       <img class="advantage-main-page__slider-btn-img-l" src="/icon/adven_left_icon_main_page.svg" alt="в лево"/>
     </button>
-    <div class="advantage-main-page__slider-wrp">
+    <div class="advantage-main-page__slider-wrp"
+         ref="list"
+    >
       <div
         :style="{marginLeft: '-' + marginSlider * 100 + '%'}"
         class="advantage-main-page__slider-motion"
@@ -30,12 +32,18 @@
         <div
           v-for="(advantArr) of advantArrs"
           :key="advantArr.id"
-          class="advantage-main-page__img-wrp">
-          <img
-            :src="advantArr.img"
-            alt="Готовые решения"
-            class="advantage-main-page__img"
-          />
+
+          class="advantage-main-page__img-text-wrp"
+        >
+          <div
+            class="advantage-main-page__img-wrp"
+          >
+            <img
+              :src="advantArr.img"
+              alt="Готовые решения"
+              class="advantage-main-page__img"
+            />
+          </div>
           <div class="advantage-main-page__tetx">
             <p>
               {{ advantArr.text }}
@@ -89,7 +97,8 @@ export default {
       ],
       marginSlider: 0,
       width: 0,
-      withBlockSlider: 0
+      withBlockSlider: 0,
+      itemWidth: 0
     }
   },
   methods: {
@@ -110,9 +119,16 @@ export default {
     },
     updateWidth() {
       this.width = window.innerWidth;
+    },
+    onResize() {
+      this.width = window.innerWidth;
+      this.itemWidth = this.$refs.list.getBoundingClientRect().width;
+      this.$refs.list.style.setProperty('--slider-item-width', this.itemWidth + 'px');
     }
   },
   mounted() {
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
   }
 }
 </script>
@@ -120,7 +136,7 @@ export default {
 <style lang="scss">
 .advantage-main-page {
   @include pageGredCard;
-  display: none;
+
   &__nav {
     padding-top: 12px;
     display: flex;
@@ -187,8 +203,9 @@ export default {
   }
 
   &__slider-wrp {
+    --slider-item-width: 885px;
+    width: 100%;
     @include flexCentrSpaceBet;
-    max-width: 885px;
     overflow: hidden;
   }
 
@@ -212,15 +229,22 @@ export default {
     text-align: center;
   }
 
-  &__img-wrp {
-    max-width: 966px;
+  &__img-text-wrp {
     margin-bottom: 32px;
     @include flexCentr;
     flex-direction: column;
   }
 
+  &__img-wrp {
+    max-width: var(--slider-item-width);
+    min-width: var(--slider-item-width);
+    display: flex;
+  }
+
   &__img {
-    max-width: 966px;
+    width: 100%;
+    display: flex;
+    object-fit: cover;
   }
 
   &__circles {

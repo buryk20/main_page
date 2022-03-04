@@ -123,7 +123,10 @@ export default {
         },
       ],
       replayCheck: Number.NEGATIVE_INFINITY,
-      showActiveItem: {},
+      showActiveItem: {
+        startX: 0,
+        currentX: 0
+      },
       startX: 0,
       endX: 0,
       itemWidth: 0,
@@ -159,7 +162,7 @@ export default {
       if (this.isMobile) {
         this.startMove(e.touches[0].clientX);
         window.addEventListener('touchmove', this.touchMove);
-        // this.textMove(ind)
+
       }
     },
     startMove(currX) {
@@ -171,16 +174,23 @@ export default {
       this.showActiveItem.currentX = currX;
     },
     endMove() {
-      if (Math.sign(this.showActiveItem.currentX - this.showActiveItem.startX) < 0) {
+      const clientWay = this.showActiveItem.currentX - this.showActiveItem.startX;
+
+      if (Math.abs(clientWay) < 10) {
+        this.showActiveItem.currentX = this.showActiveItem.startX
+        return
+      }
+      if (Math.sign(clientWay) < 0) {
         this.isRightClick = true;
-      } else if (Math.sign(this.showActiveItem.currentX - this.showActiveItem.startX) > 0) {
+      } else if (Math.sign(clientWay) > 0) {
         this.isRightClick = false;
       }
-        if (this.isRightClick && this.counter < (this.rangeData.length - 1)) {
+      if (this.isRightClick && this.counter < (this.rangeData.length - 1)) {
         this.counter += 1;
+        console.log(this.counter)
       } else if (!this.isRightClick && this.counter > 0) {
-        this.counter -= 1;
-      }
+          this.counter -= 1;
+        }
     },
     mobileVersionCheck() {
       if (!this.isMobile) {
@@ -190,23 +200,20 @@ export default {
       }
     },
     touchMove(e) {
-      this.move(e.touches[0].clientX)
+      this.move(e.touches[0].clientX);
     },
     touchEnd(e) {
       this.endMove();
       window.removeEventListener('touchmove', this.touchMove);
     },
-
     setMyInterval() {
       this.intervalHandler = setInterval(() => {
       }, 8000)
     },
-
     resetInterval() {
       clearInterval(this.intervalHandler);
       this.setMyInterval();
     },
-
     onResize() {
       this.width = window.innerWidth;
       this.mobileVersionCheck();
