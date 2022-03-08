@@ -14,6 +14,8 @@ $colorCardGrey: #8a8a8a;
 $colorBackSlider: #009b3e1a;
 $colorTranparentGray: #c4c4c4;
 $borderForm: 1px solid $colorCardGrey;
+$fontSizeMob: 12px;
+$fontSizeMobTitle: 18px;
 
 //вложенности
 %icon-position-cent {
@@ -46,6 +48,14 @@ $borderForm: 1px solid $colorCardGrey;
 }
 
 //mixin
+
+@mixin fontSizeMob {
+  font-size: $fontSizeMob;
+}
+
+@mixin fontSizeMobTitle {
+  font-size: $fontSizeMobTitle;
+}
 
 @mixin flexCentrSpaceBet {
   display: flex;

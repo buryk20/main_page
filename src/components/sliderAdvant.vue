@@ -153,6 +153,11 @@ export default {
     margin-bottom: 32px;
     font-size: 36px;
     text-align: center;
+
+    @include mobileWidth {
+      margin-bottom: 24px;
+      font-size: 30px;
+    }
   }
 
   &__nav-wrp {
@@ -240,16 +245,20 @@ export default {
     min-width: var(--slider-item-width);
     margin-bottom: 50px;
     display: flex;
+    justify-content: center;
 
     @include mobileWidth {
-      margin-bottom: 37px;
+      margin-bottom: 30px;
     }
   }
 
   &__img {
-    width: 100%;
-    display: flex;
-    object-fit: cover;
+    @include mobileWidth {
+      width: 100%;
+      display: flex;
+      object-fit: cover;
+    }
+
   }
 
   &__circles {

@@ -219,8 +219,8 @@ export default {
     onResize() {
       this.width = window.innerWidth;
       this.mobileVersionCheck();
-      this.itemWidth = this.$refs.list.getBoundingClientRect().width;
-      this.$refs.slider.style.setProperty('--slider-item-with', this.itemWidth + 'px');
+        this.itemWidth = this.$refs.list.getBoundingClientRect().width;
+        this.$refs.slider.style.setProperty('--slider-item-with', this.itemWidth + 'px');
     }
   },
   mounted() {
