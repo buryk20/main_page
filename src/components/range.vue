@@ -379,6 +379,7 @@ export default {
     @include mobileWidth {
       text-align: center;
       height: auto;
+      @include fontSizeMob;
     }
   }
 

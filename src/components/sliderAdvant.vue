@@ -44,7 +44,7 @@
               class="advantage-main-page__img"
             />
           </div>
-          <div class="advantage-main-page__tetx">
+          <div class="advantage-main-page__text">
             <p>
               {{ advantArr.text }}
             </p>
@@ -229,9 +229,13 @@ export default {
     }
   }
 
-  &__tetx {
+  &__text {
     max-width: 966px;
     text-align: center;
+
+    @include mobileWidth {
+      @include fontSizeMob;
+    }
   }
 
   &__img-text-wrp {
