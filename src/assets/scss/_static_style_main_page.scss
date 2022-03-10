@@ -1,5 +1,6 @@
 .inform-bloc-main-page {
   padding-top: 54px;
+  margin-bottom: 54px;
   @include pageGredCard;
   @include startAdaptiveSmol {
     & {
@@ -37,6 +38,11 @@
     padding: 0;
     display: flex;
     justify-content: space-between;
+
+    @include startAdaptiveSmol {
+      max-width: 894px;
+      margin-right: 0;
+    }
 
     @include bigMobileWidth {
       max-width: 100%;
@@ -195,7 +201,7 @@
   }
   &__registrar-icon {
     position: absolute;
-    right: 9px;
+    right: -19px;
     top: 6px;
     transition: 0.2s ease-out;
     @include startAdaptiveSmol {
@@ -233,12 +239,17 @@
     width: 100%;
     position: relative;
     display: flex;
+
+    @include startAdaptiveSmol {
+      max-width: 894px;
+    }
   }
   &__wrp-bot {
     display: flex;
 
-    @include bigMobileWidth {
+    @include startAdaptiveSmol {
       flex-direction: column;
+      align-items: center;
     }
   }
   &__new-opport-img {
@@ -266,5 +277,105 @@
   &__btn {
     @include btnCardWhiteBackground;
     max-width: 113px;
+  }
+}
+
+
+.cases-main-page {
+  position: relative;
+  &__img-back {
+    height: 628px;
+    @include positionImg;
+  }
+  &__nav {
+    padding-top: 44px;
+    margin-bottom: 31px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+  }
+  &__nav-title {
+    margin-bottom: 16px;
+    font-size: 36px;
+    text-align: center;
+  }
+  &__nav-line {
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+  }
+  &__nav-wrp-btn {
+    max-width: 527px;
+    width: 100%;
+  }
+  &__nav-btn-list {
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__nav-btn-text {
+    font-size: 18px;
+    cursor: pointer;
+  }
+  &__nav-info {
+    @include pageGredCard;
+    display: flex;
+    justify-content: space-between;
+    @include
+  }
+  &__nav-info-text-wrp {
+    max-width: 490px;
+    height: 312px;
+    background-color: #ffffff;
+    border-radius: 8px;
+  }
+  &__nav-info-title {
+    padding-top: 16px;
+    padding-left: 16px;
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+  &__nav-info-text {
+    height: 124px;
+    padding-left: 16px;
+    margin-bottom: 10px;
+    margin-right: 16px;
+    overflow: auto;
+    font-size: 16px;
+  }
+  &__nav-info-line {
+    width: 100%;
+    height: 1px;
+    background-color: $colorCard;
+  }
+  &__nav-info-price-wrp {
+    padding-top: 10px;
+    padding-left: 16px;
+    margin-right: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__nav-info-btn {
+    height: 40px;
+    @include  btnCardWhiteBackground;
+  }
+  &__nav-info-price-from {
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: $colorCardGrey;
+  }
+  &__nav-info-price {
+    font-size: 30px;
+    color: $colorCard;
+  }
+  &__nav-info-price-val {
+    color: $colorCardProd;
+  }
+  &__nav-info-img {
+    height: 459px;
+    display: flex;
+    align-items: flex-end;
   }
 }
