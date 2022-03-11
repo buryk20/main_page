@@ -168,57 +168,61 @@
     <section class="advantage-main-page">
         <h2 class="advantage-main-page__title">Преимущества</h2>
         <div id="sliderAdvent">
-            <div class="advantage-main-page__nav-wrp">
-                <div class="advantage-main-page__line"></div>
-                <div class="advantage-main-page__nav">
-                    <h3 class="advantage-main-page__nav-list">
-                        <div class="advanAcrion"></div>
-                        Готовые решения
-                    </h3>
-                    <h3 class="advantage-main-page__nav-list">
-                        <span class="advanAcrion"></span>Интеграция
-                    </h3>
-                    <h3 class="advantage-main-page__nav-list">
-                        <span class="advanAcrion"></span>Цена
-                    </h3>
-                    <h3 class="advantage-main-page__nav-list">
-                        <span class="advanAcrion"></span>Гарантия
-                    </h3>
+            <slider-advent data-json={"user":{"name":"Sergey","age":33}}>
+
+                <div class="advantage-main-page__nav-wrp">
+                    <div class="advantage-main-page__line"></div>
+                    <div class="advantage-main-page__nav">
+                        <h3 class="advantage-main-page__nav-list">
+                            <div class="advanAcrion"></div>
+                            Готовые решения
+                        </h3>
+                        <h3 class="advantage-main-page__nav-list">
+                            <span class="advanAcrion"></span>Интеграция
+                        </h3>
+                        <h3 class="advantage-main-page__nav-list">
+                            <span class="advanAcrion"></span>Цена
+                        </h3>
+                        <h3 class="advantage-main-page__nav-list">
+                            <span class="advanAcrion"></span>Гарантия
+                        </h3>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="advantage-main-page__slider-wrp">
-                    <button class="advantage-main-page__slider-btn">
-                        <img src="/icon/adven_left_icon_main_page.svg" alt="в лево"/>
-                    </button>
-                    <div>
+                <div>
+                    <div class="advantage-main-page__slider-wrp">
+                        <button class="advantage-main-page__slider-btn">
+                            <img src="/icon/adven_left_icon_main_page.svg" alt="в лево"/>
+                        </button>
                         <div>
-                            <div class="advantage-main-page__img-wrp">
-                                <img
-                                        src="/img/advan_main_page_img.png"
-                                        alt="Готовые решения"
-                                />
-                                <div class="advantage-main-page__tetx">
-                                    <p>
-                                        Изучив и проанализировав потребности пользователей
-                                        систем видеонаблюдения и контроля доступа, специалисты
-                                        из команды GreenVision разработали для Вас простые и
-                                        экономически выгодные решения. Вы можете купить комплект
-                                        видеонаблюдения для дома, квартиры, дачи или офиса со
-                                        100% гарантией совместимости всех сопряженных устройств.
-                                        Заказывайте готовые системы видеонаблюдения и контроля
-                                        доступа в Украине и экономьте до 15% от суммарной
-                                        стоимости элементов, купленных по отдельности.
-                                    </p>
+                            <div>
+                                <div class="advantage-main-page__img-wrp">
+                                    <img
+                                            src="/img/advan_main_page_img.png"
+                                            alt="Готовые решения"
+                                    />
+                                    <div class="advantage-main-page__tetx">
+                                        <p>
+                                            Изучив и проанализировав потребности пользователей
+                                            систем видеонаблюдения и контроля доступа, специалисты
+                                            из команды GreenVision разработали для Вас простые и
+                                            экономически выгодные решения. Вы можете купить комплект
+                                            видеонаблюдения для дома, квартиры, дачи или офиса со
+                                            100% гарантией совместимости всех сопряженных устройств.
+                                            Заказывайте готовые системы видеонаблюдения и контроля
+                                            доступа в Украине и экономьте до 15% от суммарной
+                                            стоимости элементов, купленных по отдельности.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <button class="advantage-main-page__slider-btn">
+                            <img src="/icon/adven_right_icon_main_page.svg" alt="в право"/>
+                        </button>
                     </div>
-                    <button class="advantage-main-page__slider-btn">
-                        <img src="/icon/adven_right_icon_main_page.svg" alt="в право"/>
-                    </button>
                 </div>
-            </div>
+
+            </slider-advent>
         </div>
     </section>
     <section class="inform-bloc-main-page">
@@ -342,58 +346,64 @@
             </div>
         </div>
     </section>
-    <section>
-        <div class="cases-main-page">
-            <div>
-                <img class="cases-main-page__img-back" src="/img/flat_img_main_page-back.png" alt="Видеонаблюдение готовые решения под ключ">
-            </div>
-            <div>
-                <div class="cases-main-page__nav">
-                    <h2 class="cases-main-page__nav-title">
-                        Видеонаблюдение
-                    </h2>
-                    <div class="cases-main-page__nav-wrp-btn">
-                        <div class="cases-main-page__nav-line"></div>
-                        <ul class="cases-main-page__nav-btn-list">
-                            <li>
-                                <h3 class="cases-main-page__nav-btn-text">
-                                    Квартира
-                                </h3>
-                            </li>
-                            <li>
-                                <h3 class="cases-main-page__nav-btn-text">
-                                    Квартира
-                                </h3>
-                            </li>
-                        </ul>
-                    </div>
+    <section id="cases">
+        <my-cases data={"casesArr":[{"id":1,"title":"Квартира","text":"ведуткруглосуточныйконтрольпроисходящегонаобъекте.Стабильнопередаютизображениехорошегокачестваприестественномилиискусственномосвещении,атакжевусловияхплохойвидимости.","link":"https://greenvision.ua/ua/services/apartment","img":"/img/flat_img_main_page.png","backImg":"/img/flat_img_main_page-back.png"},{"id":"02","title":"Дом","text":"ведуткруглосуточныйконтрольпроисходящегонаобъекте.Стабильнопередаютизображениехорошегокачестваприестественномилиискусственномосвещении,атакжевусловияхплохойвидимости.","link":"https://greenvision.ua/ua/services/house","img":"/img/house_img_main_page.png","backImg":"/img/house_img_main_page-back.png"},{"id":3,"title":"Офис","text":"ведуткруглосуточныйконтрольпроисходящегонаобъекте.Стабильнопередаютизображениехорошегокачестваприестественномилиискусственномосвещении,атакжевусловияхплохойвидимости.","link":"https://greenvision.ua/services/office","img":"/img/flat_img_main_page.png","backImg":"/img/flat_img_main_page-back.png"},{"id":4,"title":"Магазин","text":"ведуткруглосуточныйконтрольпроисходящегонаобъекте.Стабильнопередаютизображениехорошегокачестваприестественномилиискусственномосвещении,атакжевусловияхплохойвидимости.","link":"https://greenvision.ua/services/shop","img":"/img/shop_img_main_page.png","backImg":"/img/shop_img_main_page-back.png"},{"id":5,"title":"Склад","text":"ведуткруглосуточныйконтрольпроисходящегонаобъекте.Стабильнопередаютизображениехорошегокачестваприестественномилиискусственномосвещении,атакжевусловияхплохойвидимости.","link":"https://greenvision.ua/services/warehouse","img":"/img/warehouse_img_main_page.png","backImg":"/img/warehouse_img_main_page-back.png"}]}>
+            <div class="cases-main-page">
+                <div>
+                    <img class="cases-main-page__img-back" src="/img/flat_img_main_page-back.png"
+                         alt="Видеонаблюдение готовые решения под ключ">
                 </div>
-                <div class="cases-main-page__nav-info">
-                    <div class="cases-main-page__nav-info-text-wrp">
-                        <h3 class="cases-main-page__nav-info-title">
-                            Системы видеонаблюдения для квартиры
-                        </h3>
-                        <p class="cases-main-page__nav-info-text">
-                            Системы видеонаблюдения решают множество задач, связанных с обеспечением безопасности в частном доме. Не важно, большой или маленький у Вас дом и участок земли, расположен он в городе или за городом, живете Вы там постоянно или бываете наездами, позаботьтесь о безопасности своего имущества.
-                        </p>
-                        <div class="cases-main-page__nav-info-line"></div>
-                        <div class="cases-main-page__nav-info-price-wrp">
-                            <button class="cases-main-page__nav-info-btn"><a src="#">В каталог</a></button>
-                            <div>
-                                <p class="cases-main-page__nav-info-price-from">цена от:</p>
-                                <p class="cases-main-page__nav-info-price">
-                                    5994 <span class="cases-main-page__nav-info-price-val">грн</span>
-                                </p>
-                            </div>
+                <div>
+                    <div class="cases-main-page__nav">
+                        <h2 class="cases-main-page__nav-title">
+                            Видеонаблюдение
+                        </h2>
+                        <div class="cases-main-page__nav-wrp-btn">
+                            <div class="cases-main-page__nav-line"></div>
+                            <ul class="cases-main-page__nav-btn-list">
+                                <li>
+                                    <h3 class="cases-main-page__nav-btn-text">
+                                        Квартира
+                                    </h3>
+                                </li>
+                                <li>
+                                    <h3 class="cases-main-page__nav-btn-text">
+                                        Квартира
+                                    </h3>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="cases-main-page__nav-info-img">
-                        <img src="/img/flat_img_main_page.png" alt="Системы видеонаблюдения для квартиры">
+                    <div class="cases-main-page__nav-info">
+                        <div class="cases-main-page__nav-info-text-wrp">
+                            <h3 class="cases-main-page__nav-info-title">
+                                Системы видеонаблюдения для квартиры
+                            </h3>
+                            <p class="cases-main-page__nav-info-text">
+                                Системы видеонаблюдения решают множество задач, связанных с обеспечением безопасности в
+                                частном доме. Не важно, большой или маленький у Вас дом и участок земли, расположен он в
+                                городе или за городом, живете Вы там постоянно или бываете наездами, позаботьтесь о
+                                безопасности своего имущества.
+                            </p>
+                            <div class="cases-main-page__nav-info-line"></div>
+                            <div class="cases-main-page__nav-info-price-wrp">
+                                <button class="cases-main-page__nav-info-btn"><a src="#">В каталог</a></button>
+                                <div>
+                                    <p class="cases-main-page__nav-info-price-from">цена от:</p>
+                                    <p class="cases-main-page__nav-info-price">
+                                        5994 <span class="cases-main-page__nav-info-price-val">грн</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cases-main-page__nav-info-img">
+                            <img src="/img/flat_img_main_page.png" alt="Системы видеонаблюдения для квартиры">
+                        </div>
                     </div>
-
                 </div>
             </div>
-        </div>
+        </my-cases>
+
     </section>
 </main>
 

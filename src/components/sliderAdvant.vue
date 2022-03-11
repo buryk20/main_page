@@ -67,8 +67,17 @@
 <script>
 export default {
   name: 'SliderAdvant',
+  props:{
+    dataJson:{
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
+      parsedData: {
+        user:{}
+      },
       advantArrs: [
         {
           id: Math.round(Math.random() * (1 - 200) + 1),
@@ -129,6 +138,8 @@ export default {
   mounted() {
     this.onResize();
     window.addEventListener('resize', this.onResize);
+    console.log(this.dataJson)
+     this.parsedData = JSON.parse(this.dataJson);
   }
 }
 </script>
