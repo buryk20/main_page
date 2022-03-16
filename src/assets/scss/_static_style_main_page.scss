@@ -10,6 +10,7 @@
   @include mobileWidth {
     padding-top: 26px;
   }
+
   &__wrp-inst {
     max-width: 894px;
     width: 100%;
@@ -28,6 +29,7 @@
       flex-direction: column-reverse;
     }
   }
+
   &__recom-kit {
     max-width: 590px;
     width: 100%;
@@ -73,6 +75,7 @@
       font-size: 18px;
     }
   }
+
   &__text {
     max-width: 380px;
     font-size: 16px;
@@ -83,6 +86,7 @@
       @include fontSizeMob;
     }
   }
+
   &__wrp-text {
     padding: 16px 16px 16px 16px;
     display: flex;
@@ -93,10 +97,12 @@
       padding-top: 0;
     }
   }
+
   &__inst-btn {
     @include btnCardWhiteBackground;
     max-width: 116px;
   }
+
   &__inst-img {
     width: 100%;
     border-top-right-radius: 8px;
@@ -108,6 +114,7 @@
       border-bottom-right-radius: 0;
     }
   }
+
   &__inst-img-wrp {
     width: 100%;
     height: 288px;
@@ -117,6 +124,7 @@
       height: 221px;
     }
   }
+
   &__product {
     display: flex;
     @include startAdaptiveSmol {
@@ -130,6 +138,7 @@
       flex-wrap: wrap;
     }
   }
+
   &__registrar {
     width: 288px;
     @include boxCardProd;
@@ -141,9 +150,11 @@
         width: 100%;
       }
     }
+
     & + & {
       margin-left: 16px;
     }
+
     @include mobileWidth {
       & + & {
         margin-left: 0;
@@ -162,6 +173,7 @@
       }
     }
   }
+
   &__registrar-link {
     @include flexCentr;
     justify-content: flex-start;
@@ -174,6 +186,7 @@
       }
     }
   }
+
   &__cam-link {
     @include flexCentr;
     justify-content: center;
@@ -181,24 +194,29 @@
     color: $colorCard;
     font-size: 24px;
   }
+
   &__img-link {
     @include flexCentr;
   }
+
   &__registrar-btn {
     &:hover .inform-bloc-main-page__registrar-icon {
       right: 4px;
       transition: 0.2s ease-in;
     }
+
     &:hover .inform-bloc-main-page__cam-icon {
       right: -24px;
       transition: 0.2s ease-in;
     }
+
     @include startAdaptiveSmol {
       &:hover .inform-bloc-main-page__registrar-icon {
         right: -23px;
       }
     }
   }
+
   &__registrar-icon {
     position: absolute;
     right: -19px;
@@ -210,19 +228,23 @@
       }
     }
   }
+
   &__registrar-icon-wrp {
     position: relative;
   }
+
   &__cam-icon {
     position: absolute;
     right: -19px;
     top: 5px;
     transition: 0.2s ease-out;
   }
+
   &__new-opport-text-wrp {
     position: relative;
     color: #ffffff;
   }
+
   &__new-opport-text-wrp {
     padding: 16px 0 16px 16px;
     position: absolute;
@@ -233,6 +255,7 @@
     flex-direction: column;
     justify-content: space-between;
   }
+
   &__new-opport {
     height: 288px;
     max-width: 913px;
@@ -244,6 +267,7 @@
       max-width: 894px;
     }
   }
+
   &__wrp-bot {
     display: flex;
 
@@ -252,11 +276,13 @@
       align-items: center;
     }
   }
+
   &__new-opport-img {
     width: 100%;
     object-fit: cover;
     border-radius: 8px;
   }
+
   &__new-opport-title {
     max-width: 359px;
     font-size: 24px;
@@ -265,6 +291,7 @@
       @include fontSizeMobTitle;
     }
   }
+
   &__new-opport-text {
     max-width: 482px;
     font-size: 16px;
@@ -274,10 +301,213 @@
       @include fontSizeMob;
     }
   }
+
   &__btn {
     @include btnCardWhiteBackground;
     max-width: 113px;
   }
 }
 
+.news-main-page {
+  margin-bottom: 36px;
+  @include pageGredCard;
 
+  @include startAdaptiveSmol {
+    @include padMob;
+  }
+
+  @include mobileWidth {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    @include textTitleMainPage;
+  }
+
+  &__type {
+    @include newsType(#4490BB);
+  }
+
+  &__type-overview {
+    @include newsType(#44BBA6);
+  }
+
+  &__typeNews {
+    @include newsType(#55BB44);
+  }
+
+
+  &__wrp-pos-block {
+    @include flexCentrSpaceBet;
+    flex-wrap: wrap;
+
+    @include startAdaptiveSmol {
+      justify-content: space-around;
+    }
+  }
+
+  &__cont-wrp {
+    max-width: 488px;
+    position: relative;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: $shadowMainPage;
+    @include startAdaptiveSmol {
+      margin-bottom: 16px;
+    }
+
+    @include bigMobileWidth {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__title-link {
+    margin-bottom: 16px;
+    font-size: 24px;
+    display: inline-block;
+
+    @include mobileWidth {
+      font-size: $fontSizeMobTitle;
+    }
+  }
+
+  &__wrp-block-text {
+    padding: 16px 10px;
+  }
+
+  &__text {
+    min-height: 112px;
+    margin-bottom: 24px;
+    font-size: 16px;
+
+    @include mobileWidth {
+      font-size: $fontSizeMob;
+    }
+  }
+
+  &__btn-wrp {
+    @include flexCentrSpaceBet;
+  }
+
+  &__btn {
+    @include btnCardWhiteBackground;
+  }
+}
+
+.partner-main-page {
+  margin-bottom: 36px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+
+  @include bigMobileWidth {
+    @include flexCentr;
+  }
+
+  &__img {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  &__text-wrp {
+    padding-left: 86px;
+    @include flexCentr;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+
+    @include startAdaptiveSmol {
+      margin-right: 16px;
+    }
+
+    @include bigMobileWidth {
+      padding-left: 16px;
+    }
+  }
+
+  &__img-wrp {
+    @include bigMobileWidth {
+      display: none;
+    }
+  }
+
+  &__img-back {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    @include bigMobileWidth {
+      display: none;
+    }
+  }
+
+  &__text {
+    max-width: 546px;
+    font-size: 18px;
+
+    @include bigMobileWidth {
+      text-align: center;
+    }
+  }
+
+  &__title {
+    margin-bottom: 39px;
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: uppercase;
+
+    @include mobileWidth {
+      margin-bottom: 26px;
+    }
+
+    @include bigMobileWidth {
+      @include cenMarg;
+    }
+  }
+}
+
+.cooperation-main-page {
+  @include pageGredCard;
+
+  &__img-back {
+    @include positionImg;
+    width: auto;
+  }
+
+  &__title {
+    margin-bottom: 36px;
+    @include textTitleSlid;
+    text-align: center;
+  }
+
+  &__wrp-cont {
+    position: relative;
+  }
+
+  &__btn {
+    @include btnCardBuy;
+    max-width: 130px;
+    position: relative;
+  }
+
+  &__wrp-box {
+    max-width: 488px;
+    height: 590px;
+    @include flexCentr;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+
+  &__text {
+    max-width: 262px;
+    margin-bottom: 18px;
+    position: relative;
+    color: #ffffff;
+    font-size: 36px;
+    font-weight: 500;
+  }
+}

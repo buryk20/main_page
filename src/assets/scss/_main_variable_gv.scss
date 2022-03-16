@@ -7,6 +7,7 @@ $border-grey: 1px solid #d1d1d1;
 $line-grey-col: 1px solid #c4c4c4;
 $colorHov: #287231;
 $block-shadow: 0px 10px 35px rgba(0, 0, 0, 0.1);
+$shadowMainPage: 0px 3px 11px rgba(0, 0, 0, 0.1);
 $colorCardProd: #393d38;
 $colorCard: #009b3e;
 $btnTransparentCol: #009b3e1a;
@@ -62,6 +63,12 @@ $fontSizeMobTitle: 18px;
 
 @mixin fontSizeMob {
   font-size: $fontSizeMob;
+}
+
+@mixin textTitleMainPage {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
 }
 
 @mixin fontSizeMobTitle {
@@ -240,4 +247,15 @@ $fontSizeMobTitle: 18px;
 @mixin textTitleSlid {
   font-size: 24px;
   font-weight: 600;
+}
+
+@mixin newsType($_backColor) {
+  padding: 4px 10px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #ffffff;
+  background-color: $_backColor;
+  font-size: 16px;
+  border-radius: 8px;
 }

@@ -114,12 +114,17 @@ export default {
 <style lang="scss" scoped>
 .cases-main-page {
   height: 628px;
+  margin-bottom: 39px;
   position: relative;
   background-color: #656565;
 
   @include startAdaptiveSmol {
     @include padMob;
-}
+  }
+
+  @include bigMobileWidth {
+    margin-bottom: 24px;
+  }
   &__img-back {
     height: 628px;
     @include positionImg;
@@ -163,6 +168,9 @@ export default {
   }
   &__nav-item {
     position: relative;
+    &:hover {
+      color: #ffffff;
+    }
   }
   &__nav-wrp-btn {
     max-width: 527px;
@@ -305,12 +313,12 @@ export default {
 
 .activeNav {
   width: 100%;
-  transition: width 0.4s ease-in;
+  transition: width 0.2s ease-in;
 }
 
 .activeBtn {
   color: #ffffff;
-  transition: 0.3s ease-in;
+  transition: 0.1s ease-in;
 }
 
 .activeMain {

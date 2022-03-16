@@ -162,8 +162,7 @@ export default {
 
   &__title {
     margin-bottom: 32px;
-    font-size: 36px;
-    text-align: center;
+    @include textTitleMainPage;
 
     @include mobileWidth {
       margin-bottom: 24px;
