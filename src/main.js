@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+// import App from './App.vue'
 import range from './components/range.vue'
 import sliderAdvent from './components/sliderAdvant.vue'
 import myCases from './components/cases.vue'
 
-createApp(App).mount('#app')
-createApp(range).mount('#range')
+// createApp(App).mount('#app')
+// createApp(range).mount('#range')
 // createApp(sliderAdvent).mount('#sliderAdvent')
 // createApp(myCases).mount('#cases')
 
@@ -20,8 +20,9 @@ import {createApp as createAppInline} from 'vue/dist/vue.esm-bundler';
 
 // const app = createAppInline({}).use(store).use(VueAxios, axios);
 
-const appSliderAdvent = createAppInline({})
-const appCases = createAppInline({})
+const appSliderAdvent = createAppInline({});
+const appCases = createAppInline({});
+const appRange = createAppInline({});
 // components.forEach(component => {
 //   app.component(component.name, component)
 // });
@@ -29,6 +30,10 @@ const appCases = createAppInline({})
 appCases.component('my-cases', myCases)
 
 appSliderAdvent.component('slider-advent', sliderAdvent)
+
+appRange.component('slider-range', range)
+
+appRange.mount('#range')
 
 appSliderAdvent.mount('#sliderAdvent')
 

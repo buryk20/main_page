@@ -73,55 +73,18 @@ import rangeBtn from "./UI/rangeBtn.vue";
 export default {
   components: {rangeBtn},
   name: "my-range",
+  props: {
+    dataRange: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       currentId: 0,
+      parsedData: [],
       isActive: false,
       width: 0,
-      rangeData: [
-        {
-          id: "01",
-          title: "Видеокамеры",
-          text: "ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/Kamery",
-          img: "/img/range_main_page_img.png"
-        },
-        {
-          id: "02",
-          title: "Видеодомофоны и вызывные панели",
-          text: "2ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/SKUD/Domofony",
-          img: "/img/gv-slider-intercom.png"
-        },
-        {
-          id: "03",
-          title: "Комплекты видеонаблюдения",
-          text: "3ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki",
-          img: "/img/gv-slider-kit-img.png"
-        },
-        {
-          id: "04",
-          title: "Бесконтактные ключи и кнопки выхода",
-          text: "4ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/SKUD/Zamki-i-knopki",
-          img: "/img/gv-slider-keys-img.png"
-        },
-        {
-          id: "05",
-          title: "Источники бесперебойного питания",
-          text: "5ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/Istochniki-pitaniya",
-          img: "/img/gv-slider-ups-img.png"
-        },
-        {
-          id: "06",
-          title: "Акссесуары для подключения и монтажа",
-          text: "6ведут круглосуточный контроль происходящего на объекте. Стабильно передают изображение хорошего качества при естественном или искусственном освещении, а также в условиях плохой видимости.",
-          link: "https://greenvision.ua/production/Aksessuary",
-          img: "/img/gv-slider-accessoty-img.png"
-        },
-      ],
       replayCheck: Number.NEGATIVE_INFINITY,
       showActiveItem: {
         startX: 0,
@@ -135,7 +98,8 @@ export default {
       intervalHandler: null,
       isRightClick: false,
       counter: 0,
-      counterMob: 0
+      counterMob: 0,
+      rangeData: []
     };
   },
   computed: {
@@ -221,12 +185,18 @@ export default {
       this.mobileVersionCheck();
         this.itemWidth = this.$refs.list.getBoundingClientRect().width;
         this.$refs.slider.style.setProperty('--slider-item-with', this.itemWidth + 'px');
+    },
+    newArr() {
+      this.rangeData = this.parsedData.rangeData
     }
   },
   mounted() {
     this.onResize();
     window.addEventListener('resize', this.onResize);
     this.mobileVersionCheck();
+
+    this.parsedData = JSON.parse(this.dataRange);
+    this.newArr();
   },
   unmounted() {
     window.removeEventListener('resize', this.onResize);
@@ -328,9 +298,6 @@ export default {
     }
   }
 
-  &__img-wrp {
-  }
-
   &__text-cont {
     padding-top: 10px;
     text-align: left;
@@ -374,6 +341,7 @@ export default {
   &__style-text-mob {
     height: 56px;
     overflow: hidden;
+    word-wrap: break-word;
     @include mobileWidth {
       text-align: center;
       height: auto;

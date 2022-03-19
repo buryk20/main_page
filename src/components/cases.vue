@@ -40,23 +40,26 @@
     <div class="cases-main-page__nav-wrp">
       <div v-for="(item, index) in newCasesArr"
            :key="item.id"
-           :class="{active: currenId === index}"
+           :class="{activeImg: currenId === index}"
            class="cases-main-page__nav-info"
       >
         <div class="cases-main-page__nav-info-text-wrp">
           <h3 class="cases-main-page__nav-info-title">
-            Системы видеонаблюдения для квартиры
+            {{item.textSlider}}
           </h3>
           <p class="cases-main-page__nav-info-text">
-            Системы видеонаблюдения решают множество задач, связанных с обеспечением безопасности в частном доме. Не важно, большой или маленький у Вас дом и участок земли, расположен он в городе или за городом, живете Вы там постоянно или бываете наездами, позаботьтесь о безопасности своего имущества.
+            {{item.text}}
           </p>
           <div class="cases-main-page__nav-info-line"></div>
           <div class="cases-main-page__nav-info-price-wrp">
-            <button class="cases-main-page__nav-info-btn"><a src="#">В каталог</a></button>
+            <button class="cases-main-page__nav-info-btn">
+              <a
+                :href="item.link"
+              >В каталог</a></button>
             <div>
               <p class="cases-main-page__nav-info-price-from">цена от:</p>
               <p class="cases-main-page__nav-info-price">
-                5994 <span class="cases-main-page__nav-info-price-val">грн</span>
+                {{ item.price }} <span class="cases-main-page__nav-info-price-val">грн</span>
               </p>
             </div>
           </div>
@@ -93,19 +96,14 @@ export default {
   },
   methods: {
     newArr() {
-      this.parsedData.casesArr.forEach(el => {
-        this.newCasesArr.push(el)
-      })
+        this.newCasesArr = this.parsedData.casesArr;
     },
     navClick(inBtn) {
       this.currenId = inBtn;
     }
   },
   mounted() {
-    // console.log(this.data)
-    // console.log(JSON.parse(this.data))
     this.parsedData = JSON.parse(this.data);
-    // console.log(this.parsedData.casesArr[0].id)
     this.newArr();
   }
 }
@@ -201,7 +199,7 @@ export default {
     display: flex;
     justify-content: space-between;
     position: absolute;
-    opacity: 0;
+    display: none;
 
     @include bigMobileWidth {
       flex-direction: column;
@@ -229,6 +227,7 @@ export default {
     padding-left: 16px;
     margin-bottom: 24px;
     font-size: 24px;
+    word-break: break-word;
 
     @include bigMobileWidth {
       padding-top: 7px;
@@ -244,6 +243,7 @@ export default {
     margin-right: 16px;
     overflow: auto;
     font-size: 16px;
+    word-break: break-word;
 
     @include bigMobileWidth {
       height: 87px;
@@ -323,5 +323,9 @@ export default {
 
 .activeMain {
   display: block;
+}
+
+.activeImg {
+  display: flex;
 }
 </style>

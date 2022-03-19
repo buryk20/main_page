@@ -404,6 +404,7 @@
 
   @include bigMobileWidth {
     @include flexCentr;
+    margin-bottom: 32px;
   }
 
   &__img {
@@ -466,29 +467,53 @@
 
     @include bigMobileWidth {
       @include cenMarg;
+      text-align: center;
     }
   }
 }
 
 .cooperation-main-page {
+  margin-bottom: 40px;
   @include pageGredCard;
+
+  @include startAdaptiveSmol {
+    @include padMob;
+  }
 
   &__img-back {
     @include positionImg;
-    width: auto;
+    width: 488px;
+    height: 590px;
+    border-radius: 8px;
+
+    @include mobileWidth {
+      width: 355px;
+      height: 355px;
+    }
   }
 
   &__title {
     margin-bottom: 36px;
-    @include textTitleSlid;
+    @include textTitleMainPage;
     text-align: center;
+
+    @include mobileWidth {
+      font-size: 30px;
+    }
   }
 
   &__wrp-cont {
     position: relative;
+    @include flexCentrSpaceBet;
+    flex-wrap: wrap;
+
+    @include startAdaptiveSmol {
+      justify-content: space-evenly;
+    }
   }
 
   &__btn {
+    margin-bottom: 16px;
     @include btnCardBuy;
     max-width: 130px;
     position: relative;
@@ -496,18 +521,30 @@
 
   &__wrp-box {
     max-width: 488px;
+    width: 100%;
     height: 590px;
     @include flexCentr;
     justify-content: flex-end;
     flex-direction: column;
+    position: relative;
+
+    @include startAdaptiveSmol {
+      margin-bottom: 16px;
+    }
+
+    @include  mobileWidth {
+      max-width: 355px;
+      height: 355px;
+    }
   }
 
   &__text {
-    max-width: 262px;
+    max-width: 326px;
     margin-bottom: 18px;
     position: relative;
     color: #ffffff;
     font-size: 36px;
     font-weight: 500;
+    text-align: center;
   }
 }
